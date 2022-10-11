@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useApplicationContext } from '../../provider'
 import { withPrefix } from "gatsby"
 // import ApplicationLayout from '../components/Layout/index';
-import Footer from "../components/footer";
+import Footer from "../components/footer-1";
 import Header from "../components/header";
 
 

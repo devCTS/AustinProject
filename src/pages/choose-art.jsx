@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react'
 import { useApplicationContext } from '../../provider'
 import { withPrefix } from "gatsby"
-import ApplicationLayout from '../components/Layout/index';
+// import ApplicationLayout from '../components/Layout/index';
+import Footer from "../components/footer";
+import Header from "../components/header";
+
 
 export default function Layout({ location }) {
   const appContext = useApplicationContext()
@@ -28,7 +31,8 @@ export default function Layout({ location }) {
 
   return (
     <>
-      <ApplicationLayout>
+      {/* <ApplicationLayout> */}
+      <Header></Header>
 
         {/* Content - Main */}
         <main className="content-main">
@@ -82,7 +86,8 @@ export default function Layout({ location }) {
               </div>
             </div>
           </div></main>
-      </ApplicationLayout>
+      {/* </ApplicationLayout> */}
+      <Footer></Footer>
 
     </>
 

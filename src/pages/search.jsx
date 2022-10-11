@@ -32,75 +32,74 @@ export default function Layout({ children }) {
             <script src={withPrefix("assets/plugins/LC-Lightbox-LITE/js/lc_lightbox.lite.custom.js")} type="text/javascript" />
             <script src={withPrefix("assets/plugins/LC-Lightbox-LITE/lib/AlloyFinger/alloy_finger.min.js")} type="text/javascript" />
         </Helmet>
-      {/* Header */}
-      <Header1></Header1>
-      {/* Content - Main */}
+                <Header1></Header1>
+                {/* Content - Main */}
 
-      <main className="content-main">
-        <div className="search-block">
-            <div className="container">
-            <div className="heading-txt">
-                <div className="sub-heading">Remixer</div>
-                <h3>Edit over 10,000,000 amazing images available through Lexica art:</h3>
-            </div>
-            <div className="search-form">
-                <label>Start typing...</label>
-                <div className="input-out">
-                <div className="input-inn">
-                    <input type="text" className="search-input" placeholder="Search..." />
-                    <button className="btn btn-blue btn-search">Search</button>
-                </div>
-                <div className="feature-links">
-                    <div className="aside">
-                    <ul>
-                        <li className><a href="#">Doggies</a></li>
-                        <li><a href="#">Space</a></li>
-                        <li><a href="#">Cars</a></li>
-                        <li><a href="#">Bubbles</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Diamonds</a></li>
-                        <li><a href="#">Superhero’s</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Fashion</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Funny</a></li>
-                        <li><a href="#">Games</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Category</a></li>
-                    </ul>
+                <main className="content-main">
+                    <div className="search-block">
+                        <div className="container">
+                            <div className="heading-txt">
+                                <div className="sub-heading">Remixer</div>
+                                <h3>Edit over 10,000,000 amazing images available through Lexica art:</h3>
+                            </div>
+                            <div className="search-form">
+                                <label>Start typing...</label>
+                                <div className="input-out">
+                                    <div className="input-inn">
+                                        <input type="text" className="search-input" placeholder="Search..." />
+                                        <button className="btn btn-blue btn-search">Search</button>
+                                    </div>
+                                    <div className="feature-links">
+                                        <div className="aside">
+                                            <ul>
+                                                <li className><a href="#">Doggies</a></li>
+                                                <li><a href="#">Space</a></li>
+                                                <li><a href="#">Cars</a></li>
+                                                <li><a href="#">Bubbles</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Diamonds</a></li>
+                                                <li><a href="#">Superhero’s</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Fashion</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Funny</a></li>
+                                                <li><a href="#">Games</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                                <li><a href="#">Category</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="sml-txt">Click Remix to generate a new image from the original prompt or, Click Merchify to see any AI image on a wide variety of merchandise.</div>
+                                <div className="required-box"><em><img src={withPrefix("assets/img/icon-info.png")} alt="icon-info" /></em> We do not filter the images shown.</div>
+                            </div>
+                            <div className="search-results row" style={{ display: "grid" }}>
+                            </div>
+                            <div className="loading-spin-container">
+                                <i className="loading-spin fa fa-circle-o-notch fa-spin" style={{ fontSize: 24 }} />
+                            </div>
+                            <div className="row">
+                                <button className="btn btn-blue btn-loadmore mx-auto my-4" style={{ display: "flex" }}>
+                                    Load More...
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                </div>
-                <div className="sml-txt">Click Remix to generate a new image from the original prompt or, Click Merchify to see any AI image on a wide variety of merchandise.</div>
-                <div className="required-box"><em><img src={withPrefix("assets/img/icon-info.png")} alt="icon-info" /></em> We do not filter the images shown.</div>
-            </div>
-            <div className="search-results row" style={{display: "grid"}}>
-            </div>
-            <div className="loading-spin-container">
-                <i className="loading-spin fa fa-circle-o-notch fa-spin" style={{fontSize: 24}} />
-            </div>
-            <div className="row">
-                <button className="btn btn-blue btn-loadmore mx-auto my-4" style={{display:"flex"}}>
-                Load More...
-                </button>
-            </div>
-            </div>
-        </div>
-    </main>
+                </main>
 
 
-      {/* Footer */}
-      <Footer1></Footer1>
-    </div>
-    </>
-  )
+                {/* Footer */}
+                <Footer1></Footer1>
+            </div>
+        </>
+    )
 }

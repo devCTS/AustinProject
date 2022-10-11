@@ -1,18 +1,10 @@
 import React from "react";
-import Helmet from "react-helmet";
-import { withPrefix } from "gatsby"
-
 import Home from "./Home";
-import Layout from "../components/layout"
 
 
 export default function Home1() {
   return (
     <>
-    <Helmet>
-        {/* <script src={withPrefix("assets/js/jquery.min.js")} type="text/javascript" /> */}
-    </Helmet>
-
       <Home />
     </>
   )

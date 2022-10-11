@@ -4,7 +4,7 @@
 var mockupParams;
 // - mockup-tab select
 $(document).ready(function(){
-  renderFrontMockup();
+  // renderFrontMockup();
   initScaleSlider();
 });
 $(document).on('click', '.mockup-tab', function() {
@@ -103,7 +103,7 @@ var generatorMockup = $('.generator-mockup');
 function renderFrontMockup() {
   var mockupContent = `
     <div class="backpack-mockup front">
-      <img src="assets/mockup/backpack/front.png" alt="" />
+      <img src="../assets/mockup/backpack/front.png" alt="" />
       <span class="safe-print-area-top">Safe Print Area</span>
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="front-top">Front top</span>
@@ -119,7 +119,7 @@ function renderFrontMockup() {
 function renderTopMockup() {
   var mockupContent = `
     <div class="backpack-mockup top">
-      <img src="assets/mockup/backpack/top.png" alt="" />
+      <img src="../assets/mockup/backpack/top.png" alt="" />
       <span class="safe-print-area-top">Safe Print Area</span>
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="placement-on-product">Placement on product</span>
@@ -132,7 +132,7 @@ function renderTopMockup() {
 function renderBottomMockup() {
   var mockupContent = `
     <div class="backpack-mockup bottom">
-      <img src="assets/mockup/backpack/bottom.png" alt="" />
+      <img src="../assets/mockup/backpack/bottom.png" alt="" />
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="placement-on-product">Placement on product</span>
     </div>
@@ -144,7 +144,7 @@ function renderBottomMockup() {
 function renderInsideMockup() {
   var mockupContent = `
     <div class="backpack-mockup inside">
-      <img src="assets/mockup/backpack/inside.png" alt="" />
+      <img src="../assets/mockup/backpack/inside.png" alt="" />
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="placement-on-product">Placement on product</span>
     </div>

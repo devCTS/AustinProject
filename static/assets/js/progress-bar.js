@@ -12,6 +12,21 @@
 //     }, 10000);
 // });
 
+		// ProgrssBar Script
+$(document).ready(function() {
+    var pMsg1 = 'Generating print files and mockups...';
+    var pMsg2 = 'Waiting to be pushed to your store...';
+    $('.progress-message').text(pMsg1);
+    setTimeout(function() {
+        $('.progress-message').text(pMsg2);
+    }, 5000);
+    // 
+    startProgressBar();
+    setTimeout(function() {
+        stopProgressBar();
+    }, 10000);
+});
+
 var progressInterval;
 function startProgressBar() {
     $('.product-progress').show();

@@ -2,6 +2,7 @@ import React from "react"
 import { withPrefix } from "gatsby"
 import { Helmet } from "react-helmet";
 
+
 import Header from "../components/header";
 import Footer1 from "../components/footer-1";
 
@@ -12,7 +13,6 @@ export default function Layout({ children }) {
     <Helmet>
         <link href={withPrefix("assets/css/art-styles.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/css/components.css")} rel="stylesheet"/>
-
 
         <link href={withPrefix("assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css")} rel="stylesheet"/>
@@ -25,8 +25,6 @@ export default function Layout({ children }) {
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
 
     </Helmet>
       {/* Header */}
@@ -43,29 +41,6 @@ export default function Layout({ children }) {
                 <div className="compare-wrapper">
                 <div className="art-container">
                     <div className="art-wrapper" id="artWrapper">
-                    {/* sample art */}
-                    {/* <div class="art-img-item">
-            <div class="art-img-item-wrapper">
-                <div class="art-img-wrapper">
-                <img class="art-img" src="assets/art/img-compare-a.png" alt="">
-                <img class="magnifying-glass" src="assets/img/magnifying-glass.svg" alt="">
-                </div>
-                <div class="art-name">
-                SwinIR
-                </div>
-            </div>
-            </div>
-            <div class="art-img-item">
-            <div class="art-img-item-wrapper">
-                <div class="art-img-wrapper">
-                <img class="art-img" src="assets/art/img-compare-b.png" alt="">
-                </div>
-                <div class="art-name">
-                Real-ESRGAN
-                </div>
-            </div>
-            </div> */}
-                    {/* ./sample art */}
                     </div>
                     <div className="btn-wrapper">
                     <button className="btn-toggle">Toggle</button>
@@ -110,7 +85,7 @@ export default function Layout({ children }) {
                     <div className="round-checked-badge" />
                     <div className="art-img-item-wrapper">
                     <div className="art-img-wrapper">
-                        <img className="art-img" src="assets/art/img-compare-a.png" alt />
+                        <img className="art-img" src={withPrefix("assets/art/img-compare-a.png")} alt />
                     </div>
                     <div className="art-name">
                         Craiyon
@@ -121,7 +96,7 @@ export default function Layout({ children }) {
                     <div className="round-checked-badge" />
                     <div className="art-img-item-wrapper">
                     <div className="art-img-wrapper">
-                        <img className="art-img" src="assets/art/img-compare-b.png" alt />
+                        <img className="art-img" src={withPrefix("assets/art/img-compare-b.png")} alt />
                     </div>
                     <div className="art-name">
                         ru-DALL-E
@@ -132,7 +107,7 @@ export default function Layout({ children }) {
                     <div className="round-checked-badge" />
                     <div className="art-img-item-wrapper">
                     <div className="art-img-wrapper">
-                        <img className="art-img" src="assets/art/img-compare-a.png" alt />
+                        <img className="art-img" src={withPrefix("assets/art/img-compare-a.png")} alt />
                     </div>
                     <div className="art-name">
                         SwinIR
@@ -143,7 +118,7 @@ export default function Layout({ children }) {
                     <div className="round-checked-badge" />
                     <div className="art-img-item-wrapper">
                     <div className="art-img-wrapper">
-                        <img className="art-img" src="assets/art/img-compare-b.png" alt />
+                        <img className="art-img" src={withPrefix("assets/art/img-compare-b.png")} alt />
                     </div>
                     <div className="art-name">
                         Real-ESRGAN
@@ -189,16 +164,10 @@ export default function Layout({ children }) {
                     <div className="fullscreen-result">
                     <div className="layered-toggle-view" id="fullscreenContent">
                         <div className="result-img-names">
-                        {/* <div class="art-name">asdf</div>
-                <div class="art-name">dgsf</div> */}
+       
                         </div>
                         <div className="result-img-container">
-                        {/* <div class="result-img">
-                <div class="art-ele" style="background-image: url(assets/art/img-compare-a.png)"></div>
-                </div>
-                <div class="result-img">
-                <div class="art-ele" style="background-image: url(assets/art/img-compare-b.png)"></div>
-                </div> */}
+  
                         </div>
                     </div>
                     <div className="modal-options">

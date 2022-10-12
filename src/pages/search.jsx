@@ -34,7 +34,6 @@ export default function Layout({ children }) {
         </Helmet>
                 <Header1></Header1>
                 {/* Content - Main */}
-
                 <main className="content-main">
                     <div className="search-block">
                         <div className="container">
@@ -95,8 +94,6 @@ export default function Layout({ children }) {
                         </div>
                     </div>
                 </main>
-
-
                 {/* Footer */}
                 <Footer1></Footer1>
             </div>

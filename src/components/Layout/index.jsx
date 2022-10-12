@@ -21,7 +21,7 @@ export default function ApplicationLayout({ children }) {
                 <script src={withPrefix("assets/js/bootstrap.min.js")} type="text/javascript" />
                 <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
                 <script src={withPrefix("assets/js/python.js")} type="text/javascript" />
-                {/* <script src={withPrefix("assets/js/choose-art.js")} type="text/javascript" /> */}
+                <script src={withPrefix("assets/js/choose-art.js")} type="text/javascript" />
             </Helmet>
             <div class="new_gif" style={{ display: "none" }}>
                 <img src="/assets/img/green-little-balls.gif" class="img-fluid mw_50" alt="loading" />

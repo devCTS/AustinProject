@@ -2,7 +2,6 @@ import React from "react"
 import { withPrefix } from "gatsby"
 import { Helmet } from "react-helmet";
 
-
 import Header from "../components/header";
 import Footer1 from "../components/footer-1";
 

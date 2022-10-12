@@ -20,37 +20,37 @@ export default function Layout({ children }) {
             </div>
             <div className="row select-merch" id="artContainer">
                 <div className="col-md-4"><a href="#" className="box">
-                    <div className="figure"><img src="assets/img/art-7.png" alt="art-7" /></div>
+                    <div className="figure"><img src={withPrefix("assets/img/art-7.png")} alt="art-7" /></div>
                     <div className="aside">
                     {/* <div class="number">1</div> */}
                     </div>
                 </a></div>
                 <div className="col-md-4"><a href="#" className="box">
-                    <div className="figure"><img src="assets/img/art-8.png" alt="art-8" /></div>
+                    <div className="figure"><img src={withPrefix("assets/img/art-8.png")} alt="art-8" /></div>
                     <div className="aside">
                     {/* <div class="number">5</div> */}
                     </div>
                 </a></div>
                 <div className="col-md-4"><a href="#" className="box">
-                    <div className="figure"><img src="assets/img/art-9.png" alt="art-9" /></div>
+                    <div className="figure"><img src={withPrefix("assets/img/art-9.png")} alt="art-9" /></div>
                     <div className="aside">
                     {/* <div class="number">3</div> */}
                     </div>
                 </a></div>
                 <div className="col-md-4"><a href="#" className="box">
-                    <div className="figure"><img src="assets/img/art-10.png" alt="art-10" /></div>
+                    <div className="figure"><img src={withPrefix("assets/img/art-10.png")} alt="art-10" /></div>
                     <div className="aside">
                     {/* <div class="number">4</div> */}
                     </div>
                 </a></div>
                 <div className="col-md-4"><a href="#" className="box">
-                    <div className="figure"><img src="assets/img/art-11.png" alt="art-11" /></div>
+                    <div className="figure"><img src={withPrefix("assets/img/art-11.png")} alt="art-11" /></div>
                     <div className="aside">
                     {/* <div class="number">2</div> */}
                     </div>
                 </a></div>
                 <div className="col-md-4"><a href="#" className="box">
-                    <div className="figure"><img src="assets/img/art-12.png" alt="art-12" /></div>
+                    <div className="figure"><img src={withPrefix("assets/img/art-12.png")} alt="art-12" /></div>
                     <div className="aside">
                     {/* <div class="number">6</div> */}
                     </div>

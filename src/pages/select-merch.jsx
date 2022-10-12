@@ -1,6 +1,5 @@
 import React from "react"
 import { withPrefix } from "gatsby"
-
 import Header from "../components/header";
 import Footer1 from "../components/footer-1";
 
@@ -60,8 +59,6 @@ export default function Layout({ children }) {
             </div>
         </div>
        </main>
-
-
       {/* Footer */}
       <Footer1></Footer1>
     </div>

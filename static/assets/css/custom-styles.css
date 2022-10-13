@@ -266,10 +266,10 @@ li {
 	padding-bottom: 10px;
 }
 
-ul:last-child li:last-child,
+/* ul:last-child li:last-child,
 ol:last-child li:last-child {
 	padding-bottom: 0;
-}
+} */
 
 ul li ul,
 ol li ol {

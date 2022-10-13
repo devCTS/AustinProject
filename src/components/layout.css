@@ -119,8 +119,8 @@ fieldset,
 ul,
 ol,
 dl,
-dd,
-p {
+dd
+{
   margin: 0;
   padding: 0;
   margin-bottom: var(--space-4);

@@ -25,12 +25,12 @@ $(document).on('click', '.view', function(e) {
     if(input.type === 'password') {
         input.type = 'text';
         $(this).html(`
-            <em><img src="assets/img/eye-slash-solid.svg" alt="eye" /></em> Hide
+            <em><img src="./eye-slash-solid.svg" alt="eye" /></em> Hide
         `);
     } else {
         input.type = 'password';
         $(this).html(`
-            <em><img src="assets/img/eye-solid.svg" alt="eye" /></em> Show
+            <em><img src="./eye-solid.svg" alt="eye" /></em> Show
         `);
     }
 });

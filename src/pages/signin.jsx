@@ -2,7 +2,7 @@ import React from "react"
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
-import { withPrefix } from "gatsby";
+import { withPrefix, Link } from "gatsby";
 
 export default function Layout({ children }) {
   return (
@@ -22,7 +22,7 @@ export default function Layout({ children }) {
                 <div className="box">
                     <div className="heading-top">
                     <h3>Sign in</h3>
-                    <p>or <a href="#">Create an Account</a></p>
+                    <p>or <a href="#"><Link to ="/create-account">Create an Account</Link></a></p>
                     </div>
                     <div className="form-field">
                     <form action="#" method="post">

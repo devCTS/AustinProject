@@ -2,7 +2,7 @@ import React from "react"
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
-import { withPrefix } from "gatsby";
+import { withPrefix, Link } from "gatsby";
 
 export default function Layout({ children }) {
   return (
@@ -38,7 +38,7 @@ export default function Layout({ children }) {
                             <li><a href="#"><em><img src={withPrefix("assets/img/icon-discord.png")} alt="icon-discord" /></em> Discord</a></li>
                         </ul>
                         </div>
-                        <div className="bottom-txt">Already using 99 Generations? <a href="#">Sign in</a></div>
+                        <div className="bottom-txt">Already using 99 Generations? <a href="#"><Link to ="/signin">Sign in</Link></a></div>
                     </div>
                     </div>
                 </div>

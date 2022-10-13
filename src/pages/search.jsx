@@ -6,7 +6,7 @@ import Footer1 from "../components/footer-1";
 import Header1 from "../components/header-1";
 
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
     <>
     <div className="container-main" id="page">

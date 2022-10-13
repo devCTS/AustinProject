@@ -7,7 +7,8 @@ export const useApplicationContext = () => useContext(ApplicationContext);
 const Provider = ({ children }) => {
   const [applicationState, setApplicationState] = useState(
     {
-      detailedDescription: ""
+      detailedDescription: "",
+      accountstep: 1
     }
   );
 

@@ -3,16 +3,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import Helmet from "react-helmet";
 import { withPrefix } from "gatsby"
-// import "../../styles/css/bootstrap.min.css"
-// import "../../styles/css/brands.min.css"
-// import "../../styles/css/light.min.css"
-// import "../../styles/css/regular.min.css"
-// import "../../styles/css/solid.min.css"
-// import "../../styles/css/duotone.min.css"
-// import "../../styles/css/fontawesome.min.css"
-// import "../../styles/css/python.css"
-// import "../../styles/css/styles.css"
-// import "../../styles/css/custom-styles.css"
+
 export default function ApplicationLayout({ children }) {
     return (
         <div>

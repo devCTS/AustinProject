@@ -6,7 +6,7 @@ import Footer from "../components/footer-1";
 import Header from "../components/header";
 
 
-export default function Layout({ location }) {
+export default function Layout() {
   const appContext = useApplicationContext()
   const { applicationState } = appContext
 

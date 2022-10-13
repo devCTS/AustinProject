@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import Header from "../components/header";
 import Footer1 from "../components/footer-1";
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
     <>
     <div className="container-main" id="page">

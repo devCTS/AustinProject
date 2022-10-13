@@ -8,7 +8,7 @@ const Provider = ({ children }) => {
   const [applicationState, setApplicationState] = useState(
     {
       detailedDescription: "",
-      accountstep: 1
+      accountstep: 1    
     }
   );
 

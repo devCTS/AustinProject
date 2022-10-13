@@ -1,9 +1,28 @@
 import { navigate } from "gatsby"
 import * as React from "react"
+import { Helmet } from "react-helmet";
+import { withPrefix } from "gatsby";
 import { useApplicationContext } from "../../provider"
+import $ from 'jquery';
 
 
 export default function V1() {
+
+    // const onPassShow = (e) => {
+    //     var input = $(this).parents('li').find('input')[0];
+    //     if(input.type === 'password') {
+    //         input.type = 'text';
+    //         $(this).html(`
+    //             <em><img src={withPrefix("assets/img/eye-slash-solid.svg" alt="eye" /></em> Hide
+    //         `);
+    //     } else {
+    //         input.type = 'password';
+    //         $(this).html(`
+    //             <em><img src={withPrefix("assets/img/eye-solid.svg" alt="eye" /></em> Show
+    //         `);
+    //     }        console.log("PRRREESSEEDDD!!!")
+    // }
+
     const [state, setState] = React.useState({
         accountstep: 2,
       })
@@ -20,6 +39,9 @@ export default function V1() {
     return (
         <>
             <div className="col-md-6 left-form">
+            <Helmet>
+                <script src={withPrefix("assets/js/auth.js")} type="text/javascript" />
+            </Helmet>
                 <div className="brand"><a href="#" /></div>
                 <div className="heading-txt">
                 <div className="aside">
@@ -27,12 +49,14 @@ export default function V1() {
                 </div>
                 </div>
                 <div className="form-field">
+
                 <form action="#" method="post">
                     <ul>
                     <li>
                         <div className="label-with-txt">
                         <label>Password</label>
-                        <div className="view"><em><img src="assets/img/eye.png" alt="eye" /></em> Show</div>
+                        <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
+
                         </div>
                         <input id="password" name="password" type="password" placeholder="Password" />
                         {/* <div class="required-txt">Password must be at least 8 characters</div> */}
@@ -40,7 +64,8 @@ export default function V1() {
                     <li>
                         <div className="label-with-txt">
                         <label>Confirm password</label>
-                        <div className="view"><em><img src="assets/img/eye.png" alt="eye" /></em> Show</div>
+                        <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
+
                         </div>
                         <input id="passwordConfirm" name="passwordConfirm" type="password" placeholder="Password" />
                         {/* <div class="required-txt">Password does not match</div> */}

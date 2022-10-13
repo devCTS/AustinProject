@@ -1,4 +1,7 @@
 // Password Validation
+
+console.log("I am here!!!");
+
 $(document).on('focus keyup', '#password', function(e) {
     $(this).parents('li').find('.required-txt').remove();
     if (this.value.length < 8) {
@@ -22,12 +25,12 @@ $(document).on('click', '.view', function(e) {
     if(input.type === 'password') {
         input.type = 'text';
         $(this).html(`
-            <em><img src="assets/img/eye.png" alt="eye" /></em> Hide
+            <em><img src="assets/img/eye-slash-solid.svg" alt="eye" /></em> Hide
         `);
     } else {
         input.type = 'password';
         $(this).html(`
-            <em><img src="assets/img/eye.png" alt="eye" /></em> Show
+            <em><img src="assets/img/eye-solid.svg" alt="eye" /></em> Show
         `);
     }
 });

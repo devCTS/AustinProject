@@ -1695,6 +1695,7 @@ figure,
 	float: none;
 	display: inline-block;
 	vertical-align: top;
+	padding: 0 0 30px 0;
 }
 
 .feature-links h3,
@@ -1815,6 +1816,11 @@ figure,
 	padding-bottom: 0;
 }
 
+.split-cont .feature-links .aside { 
+	max-width: 530px; 
+}
+
+
 .tab-links ul {
 	float: none;
 	display: inline-block;
@@ -1893,12 +1899,13 @@ figure,
 
 
 /* Split - Content */
-.search-form {
+/* .search-form {
 	width: 100%;
 	min-height: 365px;
 	float: left;
 	padding: 0 0 50px 0;
-}
+} */
+
 
 .search-form textarea {
 	height: 176px; 
@@ -2011,11 +2018,27 @@ figure,
 }
 
 .split-cont .row > div .box {
-	width: 93.80%;
+	width: 100%;
+	max-width: 530px;
 	float: left;
 	background: #F6F5FF;
 	border-radius: 32px;
-	padding: 32px 24px;
+	padding: 32px 32px;
+}
+
+.split-cont .row > div .box .box-inn {
+	width: 100%;
+	min-height: 365px;
+	float: left;
+	padding: 0 0 50px 0;
+}
+
+.split-cont .row > div .box .box-inn textarea {
+	height: 176px; 
+	font-size: 24px; 
+	line-height: 32px; 
+	padding: 24px 24px;	
+	background: none;
 }
 
 .split-cont .row > div .box p {
@@ -2043,7 +2066,8 @@ figure,
 .split-cont .row > div .feature-list {
 	width: 100%;
 	float: left; 
-	margin: 75px 0 0 0;
+
+	/* margin: 75px 0 0 0; */
 }
 
 .split-cont .row > div .feature-list .heading-top {
@@ -2227,9 +2251,14 @@ figure,
 	padding: 0 0 16px 0;
 }
 
+.s-aside {
+	max-width: 530px;
+}
+
 .split-cont .feature-links .aside { 
 	width: 100%;
 	padding-right: 0;	
+	max-width: 530px;
 }
 
 .split-cont .row > div .box {
@@ -2901,7 +2930,7 @@ figure,
 }
 
 .range-slider__range {
-	-webkit-appearance: none;
+	/* -webkit-appearance: none; */
 	width: calc(100% - (48px));
 	height: 6px;
 	border-radius:360px;

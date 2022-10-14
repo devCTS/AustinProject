@@ -2188,7 +2188,7 @@ figure,
 
 @media (min-width: 700px) {
 .feature-list {
-    padding: 20px 0 40px 0;
+    /* padding: 20px 0 40px 0; */
 }
 
 .feature-list .container {

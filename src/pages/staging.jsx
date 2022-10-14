@@ -2,6 +2,7 @@ import * as React from "react"
 import { withPrefix } from "gatsby"
 import { useApplicationContext } from "../../provider"
 import { navigate } from "gatsby"
+import { Helmet } from "react-helmet"
 
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -33,7 +34,25 @@ export default function Home() {
   }
   return (
     <>
+
       <div>
+      <Helmet>
+            <script src={withPrefix("assets/js/jquery.min.js")} type="text/javascript" />
+            {/* <script src={withPrefix("assets/js/jquery.redirect.js")} type="text/javascript" /> */}
+            <script src={withPrefix("assets/js/popper.min.js")} type="text/javascript" />
+            <script src={withPrefix("assets/js/bootstrap.min.js")} type="text/javascript" />
+            <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
+            <script src={withPrefix("assets/js/python.js")} type="text/javascript" />
+
+            <link href={withPrefix("assets/css/bootstrap.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/brands.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/light.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/regular.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/solid.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/duotone.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/fontawesome.min.css")} rel="stylesheet"/>
+            <link href={withPrefix("assets/css/custom-styles.css")} rel="stylesheet"/>
+        </Helmet>
         <div className="container-main" id="page">
           {/* Header */}
           <Header></Header>
@@ -43,7 +62,7 @@ export default function Home() {
               <div className="container">
                 <h2>Create art</h2>
                 <div className="feature-links">
-                  <div className="aside">
+                  <div className="aside ">
                     <ul>
                       <li className="active"><a href="#"><p>Default</p></a></li>
                       <li><a href="#">Advanced</a></li>

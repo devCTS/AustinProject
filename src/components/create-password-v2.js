@@ -1,6 +1,7 @@
 import { navigate } from "gatsby"
 import * as React from "react"
 import { useApplicationContext } from "../../provider"
+import $ from 'jquery';
 
 export default function V2() {
 
@@ -30,10 +31,10 @@ export default function V2() {
                         <div className="verification-code">
                             <label>Four Digit Code</label>
                             <ul>
-                            <li><input id="code" name="code" type="text" placeholder /></li>
-                            <li><input id="code2" name="code2" type="text" placeholder /></li>
-                            <li><input id="code3" name="code3" type="text" placeholder /></li>
-                            <li><input id="code4" name="code4" type="text" placeholder /></li>
+                            <li><input id="code1" maxLength="1" className="code1" type="text" placeholder /></li>
+                            <li><input id="code2" maxLength="1" className="code2" type="text" placeholder /></li>
+                            <li><input id="code3" maxLength="1" className="code3" type="text" placeholder /></li>
+                            <li><input id="code4" maxLength="1" className="code4" type="text" placeholder /></li>
                             </ul>
                         </div>
                         <div className="bottom-btn">

@@ -30,20 +30,6 @@ $(document).on('focus keyup', '#passwordConfirm', function(e) {
     }
 });
 
-function selectNextTabbableOrFocusable(selector){
-    console.log("dddooojjjjoookkknnnnooommm");
-    var selectables = $(selector);
-    var current = $(':focus');
-    var nextIndex = 0;
-    if(current.length === 1){
-        var currentIndex = selectables.index(current);
-        if(currentIndex + 1 < selectables.length){
-            nextIndex = currentIndex + 1;
-        }
-    }
-
-    selectables.eq(nextIndex).focus();
-}
 
 
 $(document).on('keyup', '#code1', function(e) {
@@ -76,6 +62,7 @@ $(document).on('keyup', '#code4', function(e) {
 
 
 $(document).on('click', '.view', function(e) {
+    console.log("deadly manner");
     var input = $(this).parents('li').find('input')[0];
     if(input.type === 'password') {
         input.type = 'text';

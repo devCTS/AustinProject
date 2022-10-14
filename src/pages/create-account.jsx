@@ -27,7 +27,7 @@ export default function Layout() {
                             <label>Email</label>
                             <input id="email" name="email" type="text" placeholder="name@company.com" />
                             </div>
-                            <div className="btn-out"><a href="#" className="btn">CONTINUE</a></div>
+                            <div className="btn-out"><Link to="/create-password" className="btn">CONTINUE</Link></div>
                         </form>
                         </div>
                         <div className="or-circle"><span>OR</span></div>

@@ -274,7 +274,7 @@ ul li ul,
 ol li ol {
 	padding: 15px 0 0 0;
 }
-
+/*
 ul li:before {
 	content: ""; 
 	width: 8px; 
@@ -287,7 +287,7 @@ ul li:before {
 	left: 0;
 }
 
-
+*/
 /* #Order Styles
 ================================================= */
 

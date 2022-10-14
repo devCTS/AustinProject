@@ -275,7 +275,7 @@ ul li ul,
 ol li ol {
 	padding: 15px 0 0 0;
 }
-
+/*
 ul li:before {
 	content: ""; 
 	width: 8px; 
@@ -287,6 +287,7 @@ ul li:before {
 	top: 13px;
 	left: 0;
 }
+*/
 
 
 /* #Order Styles
@@ -2652,6 +2653,15 @@ figure,
 /* 
  5.) Footer - Main
 ----------------------------------------*/
+
+.absolute-footer{
+	list-style: none;
+	font-weight: 700;
+    color: #595a5c;
+    text-decoration: none;
+    text-transform: uppercase;
+	list-style: none;
+}
 
 .footer-main {
 	width: 100%;

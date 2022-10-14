@@ -23,7 +23,9 @@ const samplePageLinks = [
 
 const Footer = ({ siteTitle }) => (
 
+  
   <footer className="footer-main">
+
   <Helmet>
   <link href={withPrefix("assets/css/custom-styles.css")} rel="stylesheet"/>
   </Helmet>
@@ -40,13 +42,13 @@ const Footer = ({ siteTitle }) => (
 
       <div className="icons"><img src={withPrefix("img/icons-ai.svg")} /></div>
       <div className="brand"><a href="index.html" title="AtlasHoldings"> <img src={withPrefix("img/brand-99generations.svg")}/></a></div>
-      <div className="foot-menu">
-        <ul>
-          <li><a href="./privacy">Pricing</a></li>
-          <li><a href="#">My Creations</a></li>
-          <li><a href="#">My Store</a></li>
+      {/* <div > */}
+        <ul className="absolute-footer">
+          <li className="absolute-footer" sty><p href="./privacy">Pricing</p></li>
+          <li className="absolute-footer"><p href="#">My Creations</p></li>
+          <li className="absolute-footer"><p href="#">My Store</p></li>
         </ul>
-      </div>	
+      {/* </div>	 */}
       <div className="foot-sub-title">By robots, for humans.™</div>
       <div className="foot-wrap">
         <p>©2022</p>

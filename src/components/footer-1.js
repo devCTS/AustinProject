@@ -36,11 +36,7 @@ const Footer1 = ({ siteTitle }) => (
                             {i !== samplePageLinks.length - 1 && <> · </>}
                         </React.Fragment>
                         ))}
-                    {/* <ul>
-                        <li><Link to="/terms" href="/terms">Terms &amp; Conditions</Link></li> 
-                        <li><Link to="/privacy">Privacy</Link></li>
-                        <li><Link to="/cookie-policy">Cookie Policy</Link></li>
-                    </ul> */}
+
                 </div>
             </div>
         </div>

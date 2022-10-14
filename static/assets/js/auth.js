@@ -46,16 +46,17 @@ function selectNextTabbableOrFocusable(selector){
 }
 
 
-$(document).on('keypress', '#code1', function(e) {
+$(document).on('keyup', '#code1', function(e) {
+    // $(code1).value=e.which;
     $(code2).focus();
 });
-$(document).on('keypress', '#code2', function(e) {
+$(document).on('keyup', '#code2', function(e) {
     $(code3).focus();
 });
-$(document).on('keypress', '#code3', function(e) {
+$(document).on('keyup', '#code3', function(e) {
     $(code4).focus();
 });
-$(document).on('keypress', '#code4', function(e) {
+$(document).on('keyup', '#code4', function(e) {
     $(document).focus();
 });
  

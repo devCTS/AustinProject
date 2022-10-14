@@ -1,10 +1,47 @@
-import React from "react"
+import React, {
+    useState
+} from "react";
+import axios from "axios";
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
-import { withPrefix, Link } from "gatsby";
+import {
+    withPrefix,
+    Link,
+    navigate
+} from "gatsby";
 
 export default function Layout() {
+
+    const [values, setValues] = useState({
+        email: ""
+    });
+
+    const {
+        email
+    } = values;
+
+    const handleChange = (name) => (event) => {
+        setValues({
+            ...values,
+            [name]: event.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("clicked", email);
+        try {
+            const res = await axios.post("/api/auth/register/email", {
+                email,
+            });
+            navigate("/create-password");
+            console.log("SignUp Success", res);
+        } catch (error) {
+            console.log(error.response);
+        }
+    };
+
   return (
     <>
     <div className="container-main" id="page">
@@ -25,9 +62,11 @@ export default function Layout() {
                         <form action="#" method="post">
                             <div className="input-out">
                             <label>Email</label>
-                            <input id="email" name="email" type="text" placeholder="name@company.com" />
+                            <input id="email" name="email" type="text" value={email} onChange={handleChange("email")} placeholder="name@domain.com" />
                             </div>
-                            <div className="btn-out"><Link to="/create-password" className="btn">CONTINUE</Link></div>
+                            {/* <div className="btn-out"><Link to="/create-password" className="btn">CONTINUE</Link></div> */}
+
+                            <div className="btn-out"><button onClick={handleSubmit} className="btn">CONTINUE</button></div>
                         </form>
                         </div>
                         <div className="or-circle"><span>OR</span></div>

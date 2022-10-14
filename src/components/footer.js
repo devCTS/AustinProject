@@ -44,7 +44,7 @@ const Footer = ({ siteTitle }) => (
       <div className="brand"><a href="index.html" title="AtlasHoldings"> <img src={withPrefix("img/brand-99generations.svg")}/></a></div>
       {/* <div > */}
         <ul className="absolute-footer">
-          <li className="absolute-footer" sty><p href="./privacy">Pricing</p></li>
+          <li className="absolute-footer"><p href="./privacy">Pricing</p></li>
           <li className="absolute-footer"><p href="#">My Creations</p></li>
           <li className="absolute-footer"><p href="#">My Store</p></li>
         </ul>

@@ -1,10 +1,32 @@
-import React from "react"
+import React, { useState } from "react"
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
-import { withPrefix, Link } from "gatsby";
+import { withPrefix, Link, navigate } from "gatsby";
+import { signIn, getCsrfToken, getProviders, signOut, useSession } from 'next-auth/react'
+
 
 export default function Layout() {
+
+  // const [email, setEmail] = useState("")
+  // const goFetchProviders = async () => {
+  //   const providers = await getProviders()
+  //   console.log("providers", providers)
+  // }
+  // const { data: session, status } = useSession();
+  // if (session) return navigate('/staging')
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+
+  //   if (!email) return false
+  //   signIn("email", { email, redirect: false })
+
+  // }
+  // const onChange = (e) => {
+  //   setEmail(e.target.value)
+  // }
+
   return (
     <>
     <div className="container-main" id="page">
@@ -28,7 +50,7 @@ export default function Layout() {
                     <form action="#" method="post">
                         <div className="input-out">
                         <label>Email</label>
-                        <input id="email" name="email" type="text" placeholder="name@company.com" />
+                        <input id="email" name="email" type="text" placeholder="name@domain.com"/>
                         </div>
                         <div className="btn-out"><a href="#" className="btn">Continue</a></div>
                     </form>

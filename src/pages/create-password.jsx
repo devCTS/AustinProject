@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
+import { useApplicationContext } from '../../provider'
+import {
+    withPrefix,
+    Link,
+    navigate
+} from "gatsby";
 import V1 from "../components/create-password-v1";
 import V2 from "../components/create-password-v2";
 import V3 from "../components/create-password-v3";
 
-import { useApplicationContext } from '../../provider'
-
-
-import { withPrefix } from "gatsby";
-
 export default function Layout() {
+
+
     const appContext = useApplicationContext()
     const { applicationState } = appContext
 

@@ -9,7 +9,7 @@ export default function V3() {
             <div className="heading-txt" style={{paddingBottom:"0px"}}>
               <div className="aside">
                 <h2>Your account has been validated.&nbsp; &nbsp; &nbsp;&nbsp;</h2>
-                <p>Redirectiing...&nbsp; &nbsp; &nbsp;</p>
+                <p>Redirecting...&nbsp; &nbsp; &nbsp;</p>
               </div>
             </div>
             <div className="steps">

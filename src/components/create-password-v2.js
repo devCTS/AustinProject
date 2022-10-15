@@ -1,22 +1,66 @@
-import { navigate } from "gatsby"
-import * as React from "react"
-import { useApplicationContext } from "../../provider"
+import React, {
+    useState
+} from "react";
+import axios from "axios";
+import {
+    navigate
+} from "gatsby";
+import {
+    useApplicationContext
+} from "../../provider"
 import $ from 'jquery';
 
 export default function V2() {
 
+
+    const [values, setValues] = useState({
+        code1: "",
+        code2: "",
+        code3: "",
+        code4: "",
+    });
+    const {
+        code1,
+        code2,
+        code3,
+        code4
+    } = values;
+
+    const handleChange = (name) => (event) => {
+        setValues({
+            ...values,
+            [name]: event.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("/api/auth/register/password", {
+                code1,
+                code2,
+                code3,
+                code4
+            });
+            setApplicationState({
+                ...applicationState,
+                accountstep: state.accountstep
+            })
+            navigate("/create-password");
+            // console.log("SignUp Success", res);
+        } catch (error) {
+            console.log(error.response);
+        }
+    };
+
     const [state, setState] = React.useState({
         accountstep: 3,
-      })
+    })
+    const {
+        applicationState,
+        setApplicationState
+    } = useApplicationContext()
 
-      const { applicationState, setApplicationState } = useApplicationContext()
-
-      const onContinueClick = (e) => {
-        e.preventDefault()
-        console.log("i have been clicked", state)
-        setApplicationState({ ...applicationState, accountstep: state.accountstep })
-        navigate('/create-password')
-      }
     return (
         <>
             <div className="col-md-6 left-form">
@@ -31,14 +75,14 @@ export default function V2() {
                         <div className="verification-code">
                             <label>Four Digit Code</label>
                             <ul>
-                            <li><input id="code1" maxLength="1" className="code1" type="text"  /></li>
-                            <li><input id="code2" maxLength="1" className="code2" type="text"  /></li>
-                            <li><input id="code3" maxLength="1" className="code3" type="text"  /></li>
-                            <li><input id="code4" maxLength="1" className="code4" type="text"  /></li>
+                            <li><input id="code1" maxLength="1" className="code1" type="text" value={code1} onChange={handleChange("code1")} /></li>
+                            <li><input id="code2" maxLength="1" className="code2" type="text" value={code2} onChange={handleChange("code2")} /></li>
+                            <li><input id="code3" maxLength="1" className="code3" type="text" value={code3} onChange={handleChange("code3")} /></li>
+                            <li><input id="code4" maxLength="1" className="code4" type="text" value={code4} onChange={handleChange("code4")} /></li>
                             </ul>
                         </div>
                         <div className="bottom-btn">
-                            <div className="btn-out w-100 pos-l-0 pb-32"><button name="Continue" id="continue" onClick={onContinueClick} className="btn btn-sml w-100">Confirm code</button></div>
+                            <div className="btn-out w-100 pos-l-0 pb-32"><button name="Continue" id="continue" onClick={handleSubmit} className="btn btn-sml w-100">Confirm code</button></div>
                             <p> Didn't get the code? <a href="#">Resend</a></p>
                             <div className="steps w-100 pos-r-0">
                             <ul>

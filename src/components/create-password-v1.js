@@ -53,9 +53,6 @@ export default function V1() {
         }
     };
 
-
-
-
     const [state, setState] = React.useState({
         accountstep: 2,
     })

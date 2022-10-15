@@ -14,11 +14,13 @@ import {
 export default function Layout() {
 
     const [values, setValues] = useState({
-        email: ""
+        email: "",
+        password:"pass"
     });
 
     const {
-        email
+        email,
+        password
     } = values;
 
     const handleChange = (name) => (event) => {
@@ -30,10 +32,11 @@ export default function Layout() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("clicked", email);
+        console.log("clicked", email,password);
         try {
-            const res = await axios.post("/api/auth/register/email", {
+            const res = await axios.post("https://localhost:8080/api/v1/auth/register", {
                 email,
+                password,
             });
             navigate("/create-password");
             console.log("SignUp Success", res);

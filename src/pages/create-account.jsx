@@ -1,49 +1,37 @@
 import React, {
     useState
 } from "react";
-import axios from "axios";
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
+import { useApplicationContext } from "../../provider"
+import { validateEmail } from "../services/auth";
 import {
     withPrefix,
     Link,
     navigate
 } from "gatsby";
 
+
 export default function Layout() {
 
-    const [values, setValues] = useState({
-        email: "",
-        password:"pass"
-    });
+    const [state, setState] = React.useState({
+        signupEmail: "",
+    })
 
-    const {
-        email,
-        password
-    } = values;
+    const onChange = (e) => {
+        setState({ ...state, [e.target.name]: e.target.value })
+    }
 
-    const handleChange = (name) => (event) => {
-        setValues({
-            ...values,
-            [name]: event.target.value
-        });
-    };
+    const { applicationState, setApplicationState } = useApplicationContext()
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log("clicked", email,password);
-        try {
-            const res = await axios.post("https://localhost:8080/api/v1/auth/register", {
-                email,
-                password,
-            });
-            navigate("/create-password");
-            console.log("SignUp Success", res);
-        } catch (error) {
-            console.log(error.response);
+    const onCreateClick = (e) => {
+        e.preventDefault()
+        if(validateEmail(state.signupEmail)){
+            setApplicationState({ ...applicationState, signupEmail: state.signupEmail })
+            navigate('/create-password')
         }
-    };
+    }
 
   return (
     <>
@@ -65,11 +53,13 @@ export default function Layout() {
                         <form action="#" method="post">
                             <div className="input-out">
                             <label>Email</label>
-                            <input id="email" name="email" type="text" value={email} onChange={handleChange("email")} placeholder="name@domain.com" />
+                            <li className="signinli">
+                                <input id="signupEmail" name="signupEmail" type="text" value={state.signupEmail} onChange={onChange} placeholder="name@domain.com" />
+                            </li>                                
                             </div>
                             {/* <div className="btn-out"><Link to="/create-password" className="btn">CONTINUE</Link></div> */}
 
-                            <div className="btn-out"><button onClick={handleSubmit} className="btn">CONTINUE</button></div>
+                            <div className="btn-out"><button onClick={onCreateClick} className="btn">CONTINUE</button></div>
                         </form>
                         </div>
                         <div className="or-circle"><span>OR</span></div>

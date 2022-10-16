@@ -4,8 +4,16 @@ import { withPrefix } from "gatsby"
 
 import Footer1 from "../components/footer-1";
 import Header1 from "../components/header-1";
-
+import {isLoggedIn} from "../services/auth";
+import { useEffect } from 'react';
+import { navigate } from "gatsby";
 export default function Layout() {
+
+  useEffect(() => {
+    if(!isLoggedIn()){navigate('/signin');}    
+  }, []);
+
+
   return (
     <>
     <div>

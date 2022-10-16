@@ -2,11 +2,26 @@
 
 console.log("I am here!!!");
 
+function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test( $email );
+}
+
+$(document).on('focus keyup', '#signupEmail', function(e) {
+    // console.log("!!!!!!!!@@@@@@@@@@#############", validateEmail(signupEmail.value));
+    $(this).parents('li').find('.required-txt').remove();
+    if (!validateEmail(this.value)) {
+        $(this).after(`
+            <div class="required-txt">Please Input a Valid Email Address.</div>
+        `);
+    }
+});
+
 $(document).on('focus keyup', '#password', function(e) {
     $(this).parents('li').find('.required-txt').remove();
     if (this.value.length < 8) {
         $(this).after(`
-            <div class="required-txt">Password must be at least 8 characters</div>
+            <div class="required-txt">Password must be at least 8 characters.</div>
         `);
     }
 });
@@ -19,17 +34,6 @@ $(document).on('focus keyup', '#passwordConfirm', function(e) {
         `);
     }
 });
-
-
-$(document).on('focus keyup', '#passwordConfirm', function(e) {
-    $(this).parents('li').find('.required-txt').remove();
-    if (this.value !== $('#password').val()) {
-        $(this).after(`
-            <div class="required-txt">Password does not match</div>
-        `);
-    }
-});
-
 
 
 $(document).on('keyup', '#code1', function(e) {
@@ -47,20 +51,6 @@ $(document).on('keyup', '#code4', function(e) {
 });
  
 
-// $('#code1').keydown(function(e) {
-//     // if (e.keyCode == 32) {
-//         console.log("ddasdfasdf");
-//         e.which = 9;
-//         $(this).trigger(e);
-//     // }
-// });
-
-// if (myTextHasBeenFilledWithText) {
-//     // Tab to the next input after #my-text-input
-//     $("#my-text-input").emulateTab();
-//   }
-
-
 $(document).on('click', '.view', function(e) {
     console.log("deadly manner");
     var input = $(this).parents('li').find('input')[0];
@@ -76,3 +66,4 @@ $(document).on('click', '.view', function(e) {
         `);
     }
 });
+

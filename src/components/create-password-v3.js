@@ -1,6 +1,19 @@
-import * as React from "react"
+import React, { useEffect } from 'react'
+import {
+  navigate
+} from "gatsby";
 
 export default function V3() {
+
+  // const navigate = useNavigate()
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/staging')
+    }, 2000)
+  }, [])
+
+
   return (
       <>
         <div className="col-md-6">

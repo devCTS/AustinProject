@@ -1,5 +1,5 @@
 import React, {
-    useState
+    useState, useEffect
 } from "react";
 import axios from "axios";
 import {
@@ -15,38 +15,37 @@ import {
 } from "../../provider"
 import $ from 'jquery';
 
-
 export default function V1() {
 
     const [values, setValues] = useState({
         password: "",
-        passwordConfirm: ""
+        passwordConfirm: "",
+        email: "",
     });
-    const {
-        password,
-        passwordConfirm
-    } = values;
+    useEffect(() => {
+        if (applicationState.signupEmail) {
+            setState({  ...state, email : applicationState.signupEmail })
+        }
+      }, [])
 
-    const handleChange = (name) => (event) => {
-        setValues({
-            ...values,
-            [name]: event.target.value
-        });
-    };
+    const onChange = (e) => {
+        setState({ ...state, [e.target.name]: e.target.value })
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password == passwordConfirm && password.length>=8) {
+
+        const data = state;
+        if (state.password == state.passwordConfirm) {
             try {
-                // const res = await axios.post("/api/auth/register/password", {
-                //     password,
-                // });
+                console.log("!!!!!!!!!!!!!!!!!!!!!",state);
+                const res = await axios.post("http://localhost:8080/api/v1/auth/register", {email: state.email, password:state.password} );
                 setApplicationState({
                     ...applicationState,
                     accountstep: state.accountstep
                 })
                 navigate("/create-password");
-                // console.log("SignUp Success", res);
+                console.log("SignUp Success", res);
             } catch (error) {
                 console.log(error.response);
             }
@@ -61,7 +60,6 @@ export default function V1() {
         setApplicationState
     } = useApplicationContext()
  
-
     return (
         <>
             <div className="col-md-6 left-form">
@@ -82,18 +80,16 @@ export default function V1() {
                         <div className="label-with-txt">
                         <label>Password</label>
                         <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
-
                         </div>
-                        <input id="password" name="password" type="password" value={password} onChange={handleChange("password")} placeholder="Password" />
+                        <input id="password" name="password" type="password" value={state.password} onChange={onChange} placeholder="Password" />
                         {/* <div class="required-txt">Password must be at least 8 characters</div> */}
                     </li>
                     <li>
                         <div className="label-with-txt">
                         <label>Confirm password</label>
                         <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
-
                         </div>
-                        <input id="passwordConfirm" name="passwordConfirm" type="password" value={passwordConfirm} onChange={handleChange("passwordConfirm")} placeholder="Password" />
+                        <input id="passwordConfirm" name="passwordConfirm" type="password" value={state.passwordConfirm} onChange={onChange} placeholder="Password" />
                         {/* <div class="required-txt">Password does not match</div> */}
                     </li>
                     </ul>

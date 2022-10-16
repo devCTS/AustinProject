@@ -3083,6 +3083,19 @@ figure,
 	padding: 8px 0 0 10px;
 }
 
+.required-txt {
+	width: 100%;
+	float: none;
+	display: inline-block;
+	vertical-align: top;
+	font-family: "Roboto Mono", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	color: #F24730;
+	line-height: 18px;
+	padding: 8px 0 0 10px;
+}
+
 
 .split-form .row > div .form-field .verification-code {
 	width: 100%;

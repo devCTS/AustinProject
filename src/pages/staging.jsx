@@ -1,14 +1,21 @@
 import * as React from "react"
+import { useEffect } from 'react';
+// import { navigate } from "@reach/router"
 import { withPrefix } from "gatsby"
 import { useApplicationContext } from "../../provider"
 import { navigate } from "gatsby"
 import { Helmet } from "react-helmet"
-
+import {isLoggedIn} from "../services/auth";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
-
 export default function Home() {
+
+  useEffect(() => {
+    if(!isLoggedIn()){navigate('/signin');}    
+  }, []);
+
+
   const [state, setState] = React.useState({
     detailedDescription: "",
     detailedDescription2: ""

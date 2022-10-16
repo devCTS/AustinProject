@@ -1,18 +1,12 @@
-import React from "react";
-import Home from "./Home";
-
+import React from 'react'
+import Signin from "./signin";
 
 export default function Home1() {
   return (
     <>
-      <Home />
+      <Signin></Signin>
     </>
   )
+  
 }
 
-export const Head = () => (
-  <>
-    <title>99 Generations | By robots, for humans.™</title>
-    <link href="../styles/solid.min.css" rel="shortcut icon" type="image/x-icon" />
-  </>
-)

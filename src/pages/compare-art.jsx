@@ -1,11 +1,20 @@
 import React from "react"
 import { withPrefix } from "gatsby"
 import { Helmet } from "react-helmet";
-
+import { useEffect } from "react";
+import {navigate} from "gatsby";
+import { isLoggedIn } from "../services/auth";
 import Header from "../components/header";
 import Footer1 from "../components/footer-1";
 
 export default function Layout() {
+
+
+    useEffect(() => {
+        if(!isLoggedIn()){navigate('/signin');}    
+      }, []);
+    
+
   return (
     <>
     <div className="container-main" id="page">

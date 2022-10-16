@@ -2,6 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet";
 import { withPrefix } from "gatsby"
+import {logout} from "../services/auth";
 
 
 const Header = ({ siteTitle }) => (
@@ -35,8 +36,11 @@ const Header = ({ siteTitle }) => (
               <div className="btn-out">
                 <a href="#" className="btn btn-gray">CREDITS: <span className="count">30</span></a>
                 <a href="#" className="icon-user"><em className="fa fa-user" /></a>
+                {/* <a href="#" className="btn btn-blue">Sign up</a>			 */}
+                <a href="#" className="btn btn-blue" onClick={logout}>Signout</a>
+                
+                </div>
 
-                <a href="#" className="btn btn-blue">Sign up</a>			</div>
             </div>	
           </div>	
         </div>

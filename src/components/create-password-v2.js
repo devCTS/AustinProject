@@ -36,18 +36,16 @@ export default function V2() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/api/auth/register/password", {
-                code1,
-                code2,
-                code3,
-                code4
+            const res = await axios.post("http://localhost:8080/api/v1/auth/verification", {
+                otp : code1 + code2 + code3 + code4
             });
-            setApplicationState({
-                ...applicationState,
-                accountstep: state.accountstep
-            })
-            navigate("/create-password");
-            // console.log("SignUp Success", res);
+            if(res.data.ok == true){
+                setApplicationState({
+                    ...applicationState,
+                    accountstep: state.accountstep
+                })
+                navigate("/create-password");
+            }
         } catch (error) {
             console.log(error.response);
         }

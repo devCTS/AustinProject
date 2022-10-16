@@ -1,12 +1,23 @@
 import React, { useEffect } from 'react'
 import { useApplicationContext } from '../../provider'
 import { withPrefix } from "gatsby"
+import { isLoggedIn } from '../services/auth';
+import { navigate } from "gatsby";
 // import ApplicationLayout from '../components/Layout/index';
 import Footer from "../components/footer-1";
 import Header from "../components/header";
 
 
 export default function Layout() {
+
+  useEffect(() => {
+    if(!isLoggedIn()){navigate('/signin');}    
+
+    if (applicationState.detailedDescription) {
+      generateArt(applicationState.detailedDescription)
+    }
+  }, [])
+
   const appContext = useApplicationContext()
   const { applicationState } = appContext
 
@@ -23,11 +34,7 @@ export default function Layout() {
         })
     }
   }
-  useEffect(() => {
-    if (applicationState.detailedDescription) {
-      generateArt(applicationState.detailedDescription)
-    }
-  }, [])
+
 
   return (
     <>

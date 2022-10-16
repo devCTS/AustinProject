@@ -10,7 +10,7 @@ export default function V3() {
   useEffect(() => {
     setTimeout(() => {
       navigate('/staging')
-    }, 2000)
+    }, 1000)
   }, [])
 
 

@@ -8,6 +8,7 @@ import {
 import {
     useApplicationContext
 } from "../../provider"
+import { setUser } from "../services/auth";
 import $ from 'jquery';
 
 export default function V2() {
@@ -39,7 +40,9 @@ export default function V2() {
             const res = await axios.post("http://localhost:8080/api/v1/auth/verification", {
                 otp : code1 + code2 + code3 + code4
             });
+            // console.log("asdfasdf!!!!!!!!",res);
             if(res.data.ok == true){
+                setUser(res);
                 setApplicationState({
                     ...applicationState,
                     accountstep: state.accountstep

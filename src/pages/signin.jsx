@@ -23,7 +23,7 @@ export default function Layout() {
 
     const data = state;
     try {
-        const res = await axios.post("http://3.144.202.225:8080/api/v1/auth/login", {email: state.email, password:state.password});
+        const res = await axios.post("https://3.144.202.225:8080/api/v1/auth/login", {email: state.email, password:state.password});
         if(res.data.status){
           setUser(res.data);
           navigate("/staging");

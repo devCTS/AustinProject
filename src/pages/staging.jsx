@@ -28,14 +28,14 @@ export default function Home() {
   const { applicationState, setApplicationState } = useApplicationContext()
   const onGenerateClick = (e) => {
     e.preventDefault()
-    console.log("i have been clicked", state)
+    // console.log("i have been clicked", state)
     setApplicationState({ ...applicationState, detailedDescription: state.detailedDescription })
     navigate('/choose-art')
   }
 
   const onGenerateClick2 = (e) => {
     e.preventDefault()
-    console.log("i have been clicked", state)
+    // console.log("i have been clicked", state)
     setApplicationState({ ...applicationState, detailedDescription: state.detailedDescription2 })
     navigate('/choose-art')
   }

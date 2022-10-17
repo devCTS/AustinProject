@@ -20,9 +20,9 @@ export default function Layout() {
 
     useEffect(() => {
         if(applicationState.accountstep) {
-            console.log("PPPAAARRR", applicationState.accountstep);
+            // console.log("PPPAAARRR", applicationState.accountstep);
         }
-        console.log("!12312312312");
+        // console.log("!12312312312");
       }, [])
 
     const id = 3;

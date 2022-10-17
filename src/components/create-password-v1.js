@@ -38,16 +38,15 @@ export default function V1() {
         const data = state;
         if (state.password == state.passwordConfirm) {
             try {
-                console.log("!!!!!!!!!!!!!!!!!!!!!",state);
                 const res = await axios.post("https://3.144.202.225:8080/api/v1/auth/register", {email: state.email, password:state.password} );
                 setApplicationState({
                     ...applicationState,
                     accountstep: state.accountstep
                 })
                 navigate("/create-password");
-                console.log("SignUp Success", res);
+                // console.log("SignUp Success", res);
             } catch (error) {
-                console.log(error.response);
+                // console.log(error.response);
             }
         }
     };

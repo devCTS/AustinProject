@@ -28,7 +28,7 @@ export default function Layout() {
           setUser(res.data);
           navigate("/staging");
         }
-        console.log("SignUp Success", res);
+        // console.log("SignUp Success", res);
     } catch (error) {
       $('#password').parents('li').find('.required-txt').remove();
         $('#password').after(`

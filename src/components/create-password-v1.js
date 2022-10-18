@@ -36,7 +36,7 @@ export default function V1() {
         const data = state;
         if (state.password == state.passwordConfirm) {
             try {
-                const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/register", {email: state.email, password:state.password} );
+                const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/register", {email: state.email, password:state.password});
                 setApplicationState({
                     ...applicationState,
                     accountstep: state.accountstep

@@ -36,7 +36,7 @@ export default function V2() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/verification", {
+            const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/verification",{
                 otp : code1 + code2 + code3 + code4
             });
             // console.log("asdfasdf!!!!!!!!",res);

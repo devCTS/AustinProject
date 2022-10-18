@@ -7,13 +7,11 @@ import {
 } from "react-helmet";
 import {
     withPrefix,
-    Link,
     navigate
 } from "gatsby";
 import {
     useApplicationContext
 } from "../../provider"
-import $ from 'jquery';
 
 export default function V1() {
 
@@ -38,7 +36,7 @@ export default function V1() {
         const data = state;
         if (state.password == state.passwordConfirm) {
             try {
-                const res = await axios.post("https://3.144.202.225:8080/api/v1/auth/register", {email: state.email, password:state.password} );
+                const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/register", {email: state.email, password:state.password} );
                 setApplicationState({
                     ...applicationState,
                     accountstep: state.accountstep
@@ -88,7 +86,7 @@ export default function V1() {
                         <label>Confirm password</label>
                         <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
                         </div>
-                        <input id="passwordConfirm" name="passwordConfirm" type="password" value={state.passwordConfirm} onChange={onChange} placeholder="Password" />
+                        <input id="passwordConfirm" name="passwordConfirm" type="password" value={state.passwordConfirm} onChange={onChange} placeholder="Password Confirm" />
                         {/* <div class="required-txt">Password does not match</div> */}
                     </li>
                     </ul>

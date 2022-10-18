@@ -9,7 +9,6 @@ import {
     useApplicationContext
 } from "../../provider"
 import { setUser } from "../services/auth";
-import $ from 'jquery';
 
 export default function V2() {
 
@@ -37,7 +36,7 @@ export default function V2() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://3.144.202.225:8080/api/v1/auth/verification", {
+            const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/verification", {
                 otp : code1 + code2 + code3 + code4
             });
             // console.log("asdfasdf!!!!!!!!",res);

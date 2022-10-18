@@ -5,6 +5,7 @@ import axios from "axios";
 import Helmet from "react-helmet";
 import { withPrefix, Link, navigate } from "gatsby";
 import { setUser } from "../services/auth";
+
 import $ from "jquery";
 
 export default function Layout() {
@@ -23,7 +24,7 @@ export default function Layout() {
 
     const data = state;
     try {
-        const res = await axios.post("https://3.144.202.225:8080/api/v1/auth/login", {email: state.email, password:state.password});
+        const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/login", {email: state.email, password:state.password});
         if(res.data.status){
           setUser(res.data);
           navigate("/staging");

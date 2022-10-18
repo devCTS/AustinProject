@@ -1,6 +1,4 @@
-import React, {
-    useState
-} from "react";
+import React from "react";
 import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
@@ -32,6 +30,7 @@ export default function Layout() {
             navigate('/create-password')
         }
     }
+    
 
   return (
     <>

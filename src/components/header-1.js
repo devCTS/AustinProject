@@ -1,10 +1,9 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet";
 import { withPrefix } from "gatsby"
 
 
-const Header1 = ({ siteTitle }) => (
+const Header1 = () => (
     <header className="header-main">
         <Helmet>
           <link href={withPrefix("assets/css/bootstrap.min.css")} rel="stylesheet"/>
@@ -23,13 +22,5 @@ const Header1 = ({ siteTitle }) => (
       </div>
   </header>
 )
-
-Header1.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header1.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header1

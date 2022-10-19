@@ -2,6 +2,7 @@ import React, {
     useState, useEffect
 } from "react";
 import axios from "axios";
+import $ from "jquery";
 import {
     Helmet
 } from "react-helmet";
@@ -44,7 +45,10 @@ export default function V1() {
                 navigate("/create-password");
                 // console.log("SignUp Success", res);
             } catch (error) {
-                // console.log(error.response);
+                $('#passwordConfirm').parents('li').find('.required-txt').remove();
+                $('#passwordConfirm').after(`
+                    <div class="required-txt">* Sign up faild. Please check your email and password.</div>
+                `);
             }
         }
     };
@@ -86,7 +90,7 @@ export default function V1() {
                         <label>Confirm password</label>
                         <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
                         </div>
-                        <input id="passwordConfirm" name="passwordConfirm" type="password" value={state.passwordConfirm} onChange={onChange} placeholder="Password Confirm" />
+                        <input id="passwordConfirm" className="passwordConfirm" name="passwordConfirm" type="password" value={state.passwordConfirm} onChange={onChange} placeholder="Password Confirm" />
                         {/* <div class="required-txt">Password does not match</div> */}
                     </li>
                     </ul>

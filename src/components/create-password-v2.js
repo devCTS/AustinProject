@@ -1,6 +1,7 @@
 import React, {
     useState
 } from "react";
+import $ from "jquery";
 import axios from "axios";
 import {
     navigate
@@ -50,6 +51,10 @@ export default function V2() {
             }
         } catch (error) {
             console.log(error.response);
+            $('#code2').parents('ul').parents('div').find('.required-txt').remove();
+            $('#code2').parents('ul').after(`
+                <div class="required-txt">* Invalid OPT Code.</div>
+            `);
         }
     };
 
@@ -75,10 +80,10 @@ export default function V2() {
                         <div className="verification-code">
                             <label>Four Digit Code</label>
                             <ul>
-                            <li><input id="code1" maxLength="1" className="code1" type="text" value={code1} onChange={handleChange("code1")} /></li>
-                            <li><input id="code2" maxLength="1" className="code2" type="text" value={code2} onChange={handleChange("code2")} /></li>
-                            <li><input id="code3" maxLength="1" className="code3" type="text" value={code3} onChange={handleChange("code3")} /></li>
-                            <li><input id="code4" maxLength="1" className="code4" type="text" value={code4} onChange={handleChange("code4")} /></li>
+                                <li><input id="code1" maxLength="1" className="code1" type="text" value={code1} onChange={handleChange("code1")} /></li>
+                                <li><input id="code2" maxLength="1" className="code2" type="text" value={code2} onChange={handleChange("code2")} /></li>
+                                <li><input id="code3" maxLength="1" className="code3" type="text" value={code3} onChange={handleChange("code3")} /></li>
+                                <li><input id="code4" maxLength="1" className="code4" type="text" value={code4} onChange={handleChange("code4")} /></li>
                             </ul>
                         </div>
                         <div className="bottom-btn">

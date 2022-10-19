@@ -1,7 +1,5 @@
 // Password Validation
 
-console.log("I am here!!!");
-
 function validateEmail($email) {
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     return emailReg.test( $email );
@@ -51,19 +49,18 @@ $(document).on('keyup', '#code4', function(e) {
 });
  
 
-$(document).on('click', '.view', function(e) {
-    console.log("deadly manner");
-    var input = $(this).parents('li').find('input')[0];
-    if(input.type === 'password') {
-        input.type = 'text';
-        $(this).html(`
-            <em><img src="../assets/img/eye-slash-solid.svg" alt="eye" /></em> Hide
-        `);
-    } else {
-        input.type = 'password';
-        $(this).html(`
-            <em><img src="../assets/img/eye-solid.svg" alt="eye" /></em> Show
-        `);
-    }
-});
-
+// $(document).on('click', '.view', function(e) {
+//     console.log("deadly manner");
+//     var input = $(this).parents('li').find('input')[0];
+//     if(input.type === 'password') {
+//         input.type = 'text';
+//         $(this).html(`
+//             <em><img src="../assets/img/eye-slash-solid.svg" alt="eye" /></em> Hide
+//         `);
+//     } else {
+//         input.type = 'password';
+//         $(this).html(`
+//             <em><img src="../assets/img/eye-solid.svg" alt="eye" /></em> Show
+//         `);
+//     }
+// });

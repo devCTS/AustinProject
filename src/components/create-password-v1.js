@@ -21,6 +21,21 @@ export default function V1() {
         passwordConfirm: "",
         email: "",
     });
+
+    const [passwordShown1, setpasswordShown1] = useState(false);
+
+    const togglePassword = () => {
+        setpasswordShown1(!passwordShown1);
+    };
+
+
+    const [passwordShown2, setpasswordShown2] = useState(false);
+
+    const togglePassword2 = () => {
+        setpasswordShown2(!passwordShown2);
+    };
+    
+
     useEffect(() => {
         if (applicationState.signupEmail) {
             setState({  ...state, email : applicationState.signupEmail })
@@ -80,18 +95,16 @@ export default function V1() {
                     <li>
                         <div className="label-with-txt">
                         <label>Password</label>
-                        <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
+                        <div className="view" style={{width: '100%'}} onClick={togglePassword} ><em><img src={passwordShown1 ? withPrefix("assets/img/eye-slash-solid.svg") : withPrefix("assets/img/eye-solid.svg") } onClick={togglePassword} alt="eye" /></em> Show</div>
                         </div>
-                        <input id="password" name="password" type="password" value={state.password} onChange={onChange} placeholder="Password" />
-                        {/* <div class="required-txt">Password must be at least 8 characters</div> */}
+                        <input id="password" name="password" type={passwordShown1 ? "text" : "password"} value={state.password} onChange={onChange} placeholder="Password" />
                     </li>
                     <li>
                         <div className="label-with-txt">
                         <label>Confirm password</label>
-                        <div className="view" style={{width: '100%'}}><em><img src={withPrefix("assets/img/eye-solid.svg")} alt="eye" /></em> Show</div>
+                        <div className="view" style={{width: '100%'}} onClick={togglePassword2} ><em><img src={passwordShown2 ? withPrefix("assets/img/eye-slash-solid.svg") : withPrefix("assets/img/eye-solid.svg") } onClick={togglePassword2} alt="eye" /></em> Show</div>
                         </div>
-                        <input id="passwordConfirm" className="passwordConfirm" name="passwordConfirm" type="password" value={state.passwordConfirm} onChange={onChange} placeholder="Password Confirm" />
-                        {/* <div class="required-txt">Password does not match</div> */}
+                        <input id="passwordConfirm" name="passwordConfirm" type={passwordShown2 ? "text" : "password"} value={state.passwordConfirm} onChange={onChange} placeholder="Password Confirm" />
                     </li>
                     </ul>
                     <div className="bottom-btn">

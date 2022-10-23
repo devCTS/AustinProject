@@ -23,3 +23,15 @@ exports.onCreatePage = async ({ page, actions }) => {
     createPage(page)
   }
 }
+
+// exports.onCreateWebpackConfig = ({ plugins, actions }) => {
+//   actions.setWebpackConfig({
+//     plugins: [
+//       plugins.define({
+//         $: 'jquery',
+//         jQuery: 'jquery',
+//         'window.jQuery': 'jquery',
+//       }),
+//     ],
+//   })
+// }

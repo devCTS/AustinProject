@@ -18,6 +18,11 @@ import "./static/assets/css/styles.css"
 import "./static/assets/css/custom-styles.css"
 import "./static/assets/css/python.css"
 import "./static/assets/css/mockup.css"
+import "./static/assets/css/art-styles.css"
+import "./static/assets/css/components.css"
+
+// import "./static/assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+// import "./static/assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
 
 import Provider from "./provider"
 const $ = require("jquery")

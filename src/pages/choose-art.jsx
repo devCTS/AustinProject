@@ -3,9 +3,10 @@ import { useApplicationContext } from '../../provider'
 import { withPrefix } from "gatsby"
 import { isLoggedIn } from '../services/auth';
 import { navigate } from "gatsby";
-// import ApplicationLayout from '../components/Layout/index';
+import { Helmet } from 'react-helmet';
 import Footer from "../components/footer-1";
 import Header from "../components/header";
+import $ from "jquery";
 
 
 export default function Layout() {
@@ -21,29 +22,87 @@ export default function Layout() {
   const appContext = useApplicationContext()
   const { applicationState } = appContext
 
+
   const generateArt = async (phrase) => {
     const el = document.querySelectorAll('.image_art');
-    for (let i = 0; i < el.length; i++) {
-      let image = document.querySelector("#image_art" + i)
+    console.log("elelel",el.length);
       let str = phrase || "cyber punk"
-      fetch("http://52.207.235.77/api/diffusion/generate?prompt=" + str)
-        .then(response => response.blob())
-        .then(blob => {
-          let objectURL = URL.createObjectURL(blob)
-          image.src = objectURL
-        })
-    }
+      fetch("http://54.173.169.111/api/diffusion/generate?prompt="+ str).then(response => response.json())
+        .then((data) => {
+					localStorage.setItem('job_id',data.id)
+          console.log("Showing the responsed data",data);
+          for(let i = 0; i < el.length; i++){
+            let image = document.querySelector('#image_art'+i);
+						image.src = data.images[i];
+            console.log("Images", image.src);
+          }
+      });
+  }
+  
+
+  async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
   }
 
+  const onMerchifyClick = (e) => {
+    e.preventDefault();
+    console.log("MERCHIFY BUTTON IS PRESSED");
+    var conceptName = $(".selected").find('.figure img');
+    // $('.art-image').find(":selected").text()
+    console.log("THis is it", conceptName);
+    const arrImg = []
+    $.each( conceptName, function( key, value ) {
+      arrImg.push(value.src);
+  });
+    
+  $('.new_gif').css('display','flex');
+    let dataPostRequest = {
+      "id": localStorage.getItem('job_id'),
+      "images": arrImg
+    }
+    console.log(dataPostRequest);
+    const merchifyArr = []
+    postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
+    .then((data) => {
+      if (data && data.status){
+        $.map( data.images, function( val, i ) {
+          if (val.status == 'succeeded'){
+            merchifyArr.push({
+              "id_val":i ,
+              "original":val.original,
+              "upscaled":val.upscaled
+            })
+          }
+        });
+        console.log("This is it!!!!!!!!!!!!!!!!!!!", merchifyArr);
+        localStorage.setItem('mergify',JSON.stringify(merchifyArr))
+      }
+      navigate('/compare-art');
+    });
+  }
 
   return (
     <>
-      {/* <ApplicationLayout> */}
+      <Helmet>
+        <link href={withPrefix("assets/css/bootstrap.min.css")} rel="stylesheet"/>
+      </Helmet>
       <Header></Header>
-
-        {/* Content - Main */}
         <main className="content-main">
-          <div className="feature-list">
+          <div className="feature-list">  
             <div className="container">
               <div className="heading-top">
                 <h2>Choose Art</h2>
@@ -89,14 +148,12 @@ export default function Layout() {
                 </a></div>
               </div>
               <div className="btn-out">
-                <div className="btn btn-blue">Merchify It</div>
+                <div className="btn btn-blue" onClick={onMerchifyClick}>Merchify It</div>
               </div>
             </div>
-          </div></main>
-      {/* </ApplicationLayout> */}
+          </div>
+        </main>
       <Footer></Footer>
-
     </>
-
   )
 }

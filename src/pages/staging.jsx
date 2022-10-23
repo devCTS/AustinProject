@@ -12,7 +12,7 @@ import Header from "../components/header";
 export default function Home() {
 
   useEffect(() => {
-    if(!isLoggedIn()){navigate('/signin');}    
+    if(!isLoggedIn()){navigate('/signin');}
   }, []);
 
 
@@ -28,20 +28,17 @@ export default function Home() {
   const { applicationState, setApplicationState } = useApplicationContext()
   const onGenerateClick = (e) => {
     e.preventDefault()
-    // console.log("i have been clicked", state)
     setApplicationState({ ...applicationState, detailedDescription: state.detailedDescription })
     navigate('/choose-art')
   }
 
   const onGenerateClick2 = (e) => {
     e.preventDefault()
-    // console.log("i have been clicked", state)
     setApplicationState({ ...applicationState, detailedDescription: state.detailedDescription2 })
     navigate('/choose-art')
   }
   return (
     <>
-
       <div>
       <Helmet>
             <script src={withPrefix("assets/js/jquery.min.js")} type="text/javascript" />
@@ -51,6 +48,7 @@ export default function Home() {
             <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
             <script src={withPrefix("assets/js/python.js")} type="text/javascript" />
 
+            <link href={withPrefix("assets/css/custom-styles.css")} rel="stylesheet"/>
             <link href={withPrefix("assets/css/bootstrap.min.css")} rel="stylesheet"/>
             <link href={withPrefix("assets/css/brands.min.css")} rel="stylesheet"/>
             <link href={withPrefix("assets/css/light.min.css")} rel="stylesheet"/>
@@ -58,7 +56,6 @@ export default function Home() {
             <link href={withPrefix("assets/css/solid.min.css")} rel="stylesheet"/>
             <link href={withPrefix("assets/css/duotone.min.css")} rel="stylesheet"/>
             <link href={withPrefix("assets/css/fontawesome.min.css")} rel="stylesheet"/>
-            <link href={withPrefix("assets/css/custom-styles.css")} rel="stylesheet"/>
         </Helmet>
         <div className="container-main" id="page">
           {/* Header */}

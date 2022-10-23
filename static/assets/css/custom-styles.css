@@ -1,13 +1,10 @@
-
 /*
 Table Of Contents
-
 1.)  Typography
 2.)  Container - Main
 3.)  Header - Main
 4.)  Content - Main
 5.)  Footer - Main
-
 ===============================================*/
 
 
@@ -370,6 +367,10 @@ label {
 
 label .required {
 	color: #ff0000;
+}
+
+textarea:focus::placeholder{
+	color: transparent;
 }
 
 select,

@@ -1,17 +1,62 @@
+//helper function 
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+
+// api for rudalle upscale image
 function merchfiyIt(){
   var conceptName = $(".selected").find('.figure img');
   // $('.art-image').find(":selected").text()
+  console.log("THis is it", conceptName);
   const arrImg = []
   $.each( conceptName, function( key, value ) {
     arrImg.push(value.src);
 });
-  localStorage.setItem('mergify',JSON.stringify(arrImg))
+
+
+$('.new_gif').css('display','flex');
+  dataPostRequest = {
+    "id": localStorage.getItem('job_id'),
+    "images": arrImg
+  }
+  console.log(dataPostRequest);
+  const merchifyArr = []
+  postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
+  .then((data) => {
+    if (data && data.status){
+      $.map( data.images, function( val, i ) {
+        if (val.status == 'succeeded'){
+          merchifyArr.push({
+            "id_val":i ,
+            "original":val.original,
+            "upscaled":val.upscaled
+        })
+        }
+      });
+      localStorage.setItem('mergify',JSON.stringify(merchifyArr))
+
+    }
   window.location.href = 'compare-art.html'
+  });
+  
 }
 
-
-
-function createIt(){
+function resizeIt(){
 
   var createItImageObj = $(".selected").find('.art-img-wrapper img');
   //check length of object if greater than 1 then return false
@@ -20,25 +65,45 @@ function createIt(){
     return false
   }else{
     $('.new_gif').css('display','flex');
-    imgUrl = createItImageObj.attr('src')
+    imgUrl = createItImageObj.attr('alt')
+
+    localStorage.setItem('image_resize', imgUrl)
+    window.location.href = 'mockup.html'
+
+
+  }
+
+}
+// api for printfull to return backpacks
+function createIt(){
+
+  var createItImageObj = $(".selected").find('.art-img-wrapper img');
+  //check length of object if greater than 1 then return false
+  // if(createItImageObj.length > 1){
+  //   alert('Cannot select More than one Image')
+  //   return false
+  // }else{
+    $('.new_gif').css('display','flex');
+    imgUrl = localStorage.getItem('image_resize')
     // let base64image = getBase64Image(imgUrl);
-    this.getBase64ImageFromUrl(imgUrl, function(getBase64ImageFromUrl){
+    this.getBase64ImageFromUrl(imgUrl, function(){
       // console.log(result)
       var settings = {
-        "url": "http://52.207.235.77/api/crop",
+        "url": "http://54.173.169.111/api/printful/create_task",
         "method": "POST",
         "timeout": 0,
         "headers": {
           "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-          "image": getBase64ImageFromUrl
+          "image": imgUrl,
+          "id": localStorage.getItem('job_id')
 
         }),
       };
       data_key = ''
       $.ajax(settings).done(function (response) {
-
+   
         if (response && response.status) {
           const { result } = response.que
           console.log(result.task_key)
@@ -53,14 +118,14 @@ function createIt(){
           
           // $('.new_gif').css('display','block');
           // $('body').css('background','black');
-          $('#createItBtn').remove()
+          // $('#createItBtn').remove()
           
           // document.getElementById('body').style.backgroundColor = "black";
 
           setTimeout(
             function () {
 
-              ajaxphpV2(data_key)
+              redirectToBagPack(data_key)
             }, 10000);
 
         } else {
@@ -77,7 +142,7 @@ function createIt(){
   }
 
 
-}
+
 function getBase64ImageFromUrl(imgUrl, callback) {
 
   var img = new Image();
@@ -171,53 +236,75 @@ function readURL(input) {
 
 
 
-function ajaxphpV2(str) {
+function redirectToBagPack(str) {
 
   var settings = {
-    "url": "action.php?task_key=" + str,
+    "url": "http://54.173.169.111/api/printful/status?task_key="+str+"&id="+localStorage.getItem('job_id'),
     "method": "GET",
     "timeout": 0,
     "crossDomain": true,
-    "headers": {
-      "Authorization": "Basic aG96ZnJ1eWQtMWRrZC1jZjMxOnhxMjktcW41bnNpdmJhcXp3",
-      'Access-Control-Allow-Origin': "https://api.printful.com"
-    },
+    // "headers": {
+    //   "Authorization": "Basic aG96ZnJ1eWQtMWRrZC1jZjMxOnhxMjktcW41bnNpdmJhcXp3",
+    //   'Access-Control-Allow-Origin': "https://api.printful.com"
+    // },
   };
 
   $.ajax(settings).done(function (response) {
-    const obj = JSON.parse(response)
-   
-    if (obj && obj.status) {
+    // const obj = JSON.parse(response)
+    alert(response)
+    if (response && response.code == 200) {
+      console.log(response.result)
+
+      if (response.result && response.result.status == 'completed'){
+        const result = response.result.mockups
+        const images = []
+        $.map( result, function( val, i ) {
+          // console.log(val.placement)
+          images.push(val.mockup_url)
+        });
+        localStorage.setItem('bag_pack',JSON.stringify(images))
+        localStorage.removeItem("job_id");
+        localStorage.removeItem("mergify");
+        localStorage.removeItem("image_resize");
+        window.location.href = 'all-over-print-backpack.html'
+      }else{
+        alert("somthing went wrong!")
+        localStorage.clear();
+        window.location.href = 'staging.html'
+
+
+      }
       // document.getElementById('').style.display = "block";
       // document.getElementById('new_gif').style.display = "none";
       // document.getElementById('').style.display = "block";
-
-
-      $('.new_gif').css('display','none');
-      $('#response_resultsV2').css('display','block');
-      $('#compareContainer').remove()
-      $('.carousel-container').remove()
-      $('.magnifying-result-container').remove()
-      $('#fullScreenModal').remove()
       
-      $('body').css('background','white');
+      // const images = []
+      // images.push(result.front_url)
+      // images.push(result.top_url)
+      // images.push(result.bottom_url)
+      // localStorage.setItem('bacg_pack',JSON.stringify(images))
+      // // document.getElementById('front_bagpack').src = front_url_fetched
+      // // document.getElementById('top_bagpack').src = top_url_fetched
+      // // document.getElementById('bottom_bagpack').src = bottom_url_fetched
+      // window.location.href = 'all-over-print-backpack.html'
 
-      const result = obj.data
 
-      front_url_fetched = result.front_url
-      top_url_fetched = result.top_url
-      bottom_url_fetched = result.bottom_url
-      document.getElementById('front_bagpack').src = front_url_fetched
-      document.getElementById('top_bagpack').src = top_url_fetched
-      document.getElementById('bottom_bagpack').src = bottom_url_fetched
+      // $('.new_gif').css('display','none');
+      // $('#response_resultsV2').css('display','block');
+      // $('#compareContainer').remove()
+      // $('.carousel-container').remove()
+      // $('.magnifying-result-container').remove()
+      // $('#fullScreenModal').remove()
+      
+      // $('body').css('background','white');
+
+     
       // document.getElementById('queue_id').textContent =  result.task_key && result.task_key
       // document.getElementById('queue_id').textContent =  result.task_key && result.task_key
 
 
     }
   });
-
-
 }
 
 
@@ -260,9 +347,14 @@ function ajaxphp(str) {
       document.getElementById('bottom_bagpack').src = bottom_url_fetched
       // document.getElementById('queue_id').textContent =  result.task_key && result.task_key
       // document.getElementById('queue_id').textContent =  result.task_key && result.task_key
+
+
     }
   });
+
+
 }
+
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -274,6 +366,7 @@ function getBase64(file) {
 }
 
 
+// staging.html prompt api
 function generateArtImage(){
   str =  document.getElementById('commentsart2').value; 
   if(str ==''){

@@ -68,32 +68,47 @@ export default function Layout() {
     $.each( conceptName, function( key, value ) {
       arrImg.push(value.src);
   });
-    
-  $('.new_gif').css('display','flex');
-    let dataPostRequest = {
-      "id": localStorage.getItem('job_id'),
-      "images": arrImg
-    }
-    console.log(dataPostRequest);
-    const merchifyArr = []
-    postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
-    .then((data) => {
-      if (data && data.status){
-        $.map( data.images, function( val, i ) {
-          if (val.status == 'succeeded'){
-            merchifyArr.push({
-              "id_val":i ,
-              "original":val.original,
-              "upscaled":val.upscaled
-            })
-          }
-        });
-        console.log("This is it!!!!!!!!!!!!!!!!!!!", merchifyArr);
-        localStorage.setItem('mergify',JSON.stringify(merchifyArr))
-      }
-      navigate('/compare-art');
-    });
+    localStorage.setItem('selectmercharr',JSON.stringify(arrImg));
+    console.log("!!!!!!!!!!!!!!!!!", arrImg);
+    // navigate('/select-merch');
   }
+
+  //for advanced version for compare-art pages.
+  // const onMerchifyClick = (e) => {
+  //   e.preventDefault();
+  //   console.log("MERCHIFY BUTTON IS PRESSED");
+  //   var conceptName = $(".selected").find('.figure img');
+  //   // $('.art-image').find(":selected").text()
+  //   console.log("THis is it", conceptName);
+  //   const arrImg = []
+  //   $.each( conceptName, function( key, value ) {
+  //     arrImg.push(value.src);
+  // });
+    
+  // $('.new_gif').css('display','flex');
+  //   let dataPostRequest = {
+  //     "id": localStorage.getItem('job_id'),
+  //     "images": arrImg
+  //   }
+  //   console.log(dataPostRequest);
+  //   const merchifyArr = []
+  //   postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
+  //   .then((data) => {
+  //     if (data && data.status){
+  //       $.map( data.images, function( val, i ) {
+  //         if (val.status == 'succeeded'){
+  //           merchifyArr.push({
+  //             "id_val":i ,
+  //             "original":val.original,
+  //             "upscaled":val.upscaled
+  //           })
+  //         }
+  //       });
+  //       localStorage.setItem('mergify',JSON.stringify(merchifyArr))
+  //     }
+  //     navigate('/compare-art');
+  //   });
+  // }
 
   return (
     <>

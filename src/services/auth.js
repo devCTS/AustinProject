@@ -4,16 +4,18 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../services/firebase.config';
 
+console.log("!!!!!!!!!!!!!234", firebaseConfig);
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
-const facebookProvider = new firebase.auth.FacebookAuthProvider();
+// const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 export const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user));
 
 export const handleGoogleSignIn = () => {
+  console.log("Here you came");
   firebase.auth()
     .signInWithPopup(googleProvider)
     .then((result) => {

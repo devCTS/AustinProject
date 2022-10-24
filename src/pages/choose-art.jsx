@@ -12,7 +12,7 @@ import $ from "jquery";
 export default function Layout() {
 
   useEffect(() => {
-    if(!isLoggedIn()){navigate('/signin');}    
+    if (!isLoggedIn()) { navigate('/signin'); }
 
     if (applicationState.detailedDescription) {
       generateArt(applicationState.detailedDescription)
@@ -25,20 +25,22 @@ export default function Layout() {
 
   const generateArt = async (phrase) => {
     const el = document.querySelectorAll('.image_art');
-    console.log("elelel",el.length);
-      let str = phrase || "cyber punk"
-      fetch("http://54.173.169.111/api/diffusion/generate?prompt="+ str).then(response => response.json())
+    console.log("elelel", el.length);
+    let str = phrase || "cyber punk"
+    $('.image_art').each(function (i, obj) {
+
+      fetch("http://54.173.169.111/api/diffusion/generate?prompt=" + str).then(response => response.json())
         .then((data) => {
-					localStorage.setItem('job_id',data.id)
-          console.log("Showing the responsed data",data);
-          for(let i = 0; i < el.length; i++){
-            let image = document.querySelector('#image_art'+i);
-						image.src = data.images[i];
-            console.log("Images", image.src);
-          }
-      });
+          localStorage.setItem('job_id', data.id)
+          console.log("Showing the responsed data", data);
+          // for (let i = 0; i < el.length; i++) {
+            let image = document.querySelector('#image_art' + i);
+            image.src = data.images[0];
+          // }
+        });
+    });
   }
-  
+
 
   async function postData(url = '', data = {}) {
     // Default options are marked with *
@@ -58,6 +60,22 @@ export default function Layout() {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
+  // const onMerchifyClick = (e) => {
+  //   e.preventDefault();
+  //   console.log("MERCHIFY BUTTON IS PRESSED");
+  //   var conceptName = $(".selected").find('.figure img');
+  //   // $('.art-image').find(":selected").text()
+  //   console.log("THis is it", conceptName);
+  //   const arrImg = []
+  //   $.each(conceptName, function (key, value) {
+  //     arrImg.push(value.src);
+  //   });
+  //   localStorage.setItem('selectmercharr', JSON.stringify(arrImg));
+  //   console.log("!!!!!!!!!!!!!!!!!", arrImg);
+  //   // navigate('/select-merch');
+  // }
+
+  // for advanced version for compare-art pages.
   const onMerchifyClick = (e) => {
     e.preventDefault();
     console.log("MERCHIFY BUTTON IS PRESSED");
@@ -68,106 +86,90 @@ export default function Layout() {
     $.each( conceptName, function( key, value ) {
       arrImg.push(value.src);
   });
-    localStorage.setItem('selectmercharr',JSON.stringify(arrImg));
-    console.log("!!!!!!!!!!!!!!!!!", arrImg);
-    // navigate('/select-merch');
-  }
 
-  //for advanced version for compare-art pages.
-  // const onMerchifyClick = (e) => {
-  //   e.preventDefault();
-  //   console.log("MERCHIFY BUTTON IS PRESSED");
-  //   var conceptName = $(".selected").find('.figure img');
-  //   // $('.art-image').find(":selected").text()
-  //   console.log("THis is it", conceptName);
-  //   const arrImg = []
-  //   $.each( conceptName, function( key, value ) {
-  //     arrImg.push(value.src);
-  // });
-    
-  // $('.new_gif').css('display','flex');
-  //   let dataPostRequest = {
-  //     "id": localStorage.getItem('job_id'),
-  //     "images": arrImg
-  //   }
-  //   console.log(dataPostRequest);
-  //   const merchifyArr = []
-  //   postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
-  //   .then((data) => {
-  //     if (data && data.status){
-  //       $.map( data.images, function( val, i ) {
-  //         if (val.status == 'succeeded'){
-  //           merchifyArr.push({
-  //             "id_val":i ,
-  //             "original":val.original,
-  //             "upscaled":val.upscaled
-  //           })
-  //         }
-  //       });
-  //       localStorage.setItem('mergify',JSON.stringify(merchifyArr))
-  //     }
-  //     navigate('/compare-art');
-  //   });
-  // }
+  $('.new_gif').css('display','flex');
+    let dataPostRequest = {
+      "id": localStorage.getItem('job_id'),
+      "images": arrImg
+    }
+    console.log(dataPostRequest);
+    const merchifyArr = []
+    postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
+    .then((data) => {
+      if (data && data.status){
+        $.map( data.images, function( val, i ) {
+          if (val.status == 'succeeded'){
+            merchifyArr.push({
+              "id_val":i ,
+              "original":val.original,
+              "upscaled":val.upscaled
+            })
+          }
+        });
+        localStorage.setItem('mergify',JSON.stringify(merchifyArr))
+      }
+      navigate('/compare-art');
+    });
+  }
 
   return (
     <>
       <Helmet>
-        <link href={withPrefix("assets/css/bootstrap.min.css")} rel="stylesheet"/>
+        <link href={withPrefix("assets/css/bootstrap.min.css")} rel="stylesheet" />
       </Helmet>
       <Header></Header>
-        <main className="content-main">
-          <div className="feature-list">  
-            <div className="container">
-              <div className="heading-top">
-                <h2>Choose Art</h2>
+      <main className="content-main">
+        <div className="feature-list">
+          <div className="container">
+            <div className="heading-top">
+              <h2>Choose Art</h2>
+            </div>
+            <div className="row" id="artContainer">
+              <div className="col-md-4">
+                <a href="#" className="box art-image">
+                  <div className="figure">
+                    <img className="image_art" id="image_art0" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-1.png" />
+                  </div>
+                  <div className="aside">
+                  </div>
+                </a>
               </div>
-              <div className="row" id="artContainer">
-                <div className="col-md-4">
-                  <a href="#" className="box art-image">
-                    <div className="figure">
-                      <img className="image_art" id="image_art0" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-1.png" />
-                    </div>
-                    <div className="aside">
-                    </div>
-                  </a>
+              <div className="col-md-4 ">
+                <a href="#" className="box art-image">
+                  <div className="figure">
+                    <img className="image_art" id="image_art1" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-2.png" />
+                  </div>
+                  <div className="aside">
+                  </div>
+                </a>
+              </div>
+              <div className="col-md-4 "><a href="#" className="box art-image">
+                <div className="figure"><img className="image_art" id="image_art2" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-3.png" /></div>
+                <div className="aside">
                 </div>
-                <div className="col-md-4 ">
-                  <a href="#" className="box art-image">
-                    <div className="figure">
-                      <img className="image_art" id="image_art1" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-2.png" />
-                    </div>
-                    <div className="aside">
-                    </div>
-                  </a>
+              </a></div>
+              <div className="col-md-4"><a href="#" className="box art-image">
+                <div className="figure"><img className="image_art" id="image_art3" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-4.png" /></div>
+                <div className="aside">
                 </div>
-                <div className="col-md-4 "><a href="#" className="box art-image">
-                  <div className="figure"><img className="image_art" id="image_art2" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-3.png" /></div>
-                  <div className="aside">
-                  </div>
-                </a></div>
-                <div className="col-md-4"><a href="#" className="box art-image">
-                  <div className="figure"><img className="image_art" id="image_art3" src={withPrefix("assets/img/green-little-balls.gif")} alt="img/art-4.png" /></div>
-                  <div className="aside">
-                  </div>
-                </a></div>
-                <div className="col-md-4"><a href="#" className="box art-image">
-                  <div className="figure"><img className="image_art" id="image_art4" src={withPrefix("assets/img/green-little-balls.gif")} alt="art-5" /></div>
-                  <div className="aside">
-                  </div>
-                </a></div>
-                <div className="col-md-4"><a href="#" className="box art-image">
-                  <div className="figure"><img className="image_art" id="image_art5" src={withPrefix("assets/img/green-little-balls.gif")} alt="art-6" /></div>
-                  <div className="aside">
-                  </div>
-                </a></div>
-              </div>
-              <div className="btn-out">
-                <div className="btn btn-blue" onClick={onMerchifyClick}>Merchify It</div>
-              </div>
+              </a></div>
+              <div className="col-md-4"><a href="#" className="box art-image">
+                <div className="figure"><img className="image_art" id="image_art4" src={withPrefix("assets/img/green-little-balls.gif")} alt="art-5" /></div>
+                <div className="aside">
+                </div>
+              </a></div>
+              <div className="col-md-4"><a href="#" className="box art-image">
+                <div className="figure"><img className="image_art" id="image_art5" src={withPrefix("assets/img/green-little-balls.gif")} alt="art-6" /></div>
+                <div className="aside">
+                </div>
+              </a></div>
+            </div>
+            <div className="btn-out">
+              <div className="btn btn-blue" onClick={onMerchifyClick}>Merchify It</div>
             </div>
           </div>
-        </main>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   )

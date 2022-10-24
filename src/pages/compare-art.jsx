@@ -37,7 +37,7 @@ const resizeIt = () =>{
     <div className="container-main" id="page">
     <Header></Header>
     <Helmet>
-        {/* <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" /> */}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
         <link href={withPrefix("assets/css/art-styles.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/css/components.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/css/python.css")} rel="stylesheet"/>

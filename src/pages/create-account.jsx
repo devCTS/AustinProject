@@ -3,7 +3,7 @@ import Header1 from "../components/header-1";
 import Footer1 from "../components/footer-1";
 import Helmet from "react-helmet";
 import { useApplicationContext } from "../../provider"
-import { validateEmail } from "../services/auth";
+import { validateEmail, handleGoogleSignIn } from "../services/auth";
 import {
     withPrefix,
     Link,
@@ -65,7 +65,7 @@ export default function Layout() {
                         <div className="bottom-btns">
                         <ul>
                             <li><a href="#"><em><img src={withPrefix("assets/img/icon-apple.png")} alt="icon-apple" /></em> Apple</a></li>
-                            <li><a href="#"><em><img src={withPrefix("assets/img/icon-google.png")} alt="icon-google" /></em> Google</a></li>
+                            <li><a onClick={handleGoogleSignIn}><em><img src={withPrefix("assets/img/icon-google.png")} alt="icon-google" /></em> Google</a></li>
                             <li><a href="#"><em><img src={withPrefix("assets/img/icon-discord.png")} alt="icon-discord" /></em> Discord</a></li>
                         </ul>
                         </div>

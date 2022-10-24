@@ -4,9 +4,10 @@ import Footer1 from "../components/footer-1";
 import axios from "axios";
 import Helmet from "react-helmet";
 import { withPrefix, Link, navigate } from "gatsby";
-import { setUser } from "../services/auth";
-
+import { setUser, handleFacebookSignIn, handleGoogleSignIn } from "../services/auth";
 import $ from "jquery";
+
+
 
 export default function Layout() {
 
@@ -27,6 +28,7 @@ export default function Layout() {
     try {
         const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/login", {email: state.email, password:state.password}); 
         if(res.data.status){
+          console.log("This is it!", res.data);
           setUser(res.data);
           navigate("/staging");
         }
@@ -78,8 +80,9 @@ export default function Layout() {
                       <div className="bottom-btns">
                       <ul>
                           <li><a ><em><img src={withPrefix("assets/img/icon-apple.png")} alt="icon-apple" /></em> Apple</a></li>
-                          <li><a ><em><img src={withPrefix("assets/img/icon-google.png")} alt="icon-google" /></em> Google</a></li>
-                          <li><a ><em><img src={withPrefix("assets/img/icon-discord.png")} alt="icon-discord" /></em> Discord</a></li>
+                          {/* <button onClick={handleGoogleSignIn} >This is it!!!!</button> */}
+                          <li><a onClick={handleGoogleSignIn} ><em><img src={withPrefix("assets/img/icon-google.png")} alt="icon-google" /></em> Google</a></li>
+                          <li><a onClick={handleFacebookSignIn}><em><img src={withPrefix("assets/img/icon-discord.png")} alt="icon-discord" /></em> Discord</a></li>
                       </ul>
                       </div>
                   </div>

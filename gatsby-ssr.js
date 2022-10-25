@@ -24,11 +24,12 @@ export function onRenderBody(
     <script key="sjfdfks" src="/assets/js/popper.min.js"></script>,
     <script key="msmddsd" src="/assets/js/bootstrap.min.js"></script>,
     // <script key="dfdffdsd" src="/assets/js/custom.js"></script>,
+    // <script key="dfdffdsd" src="/assets/js/mockup.js"></script>,
+
     // <script key="dfdffdsfewd" src="/assets/js/compare-art.js"></script>,
     <script key="sdjsewdjsj" src="/assets/js/choose-art.js"></script>,
     <script key="sdjsdjsj" src="/assets/js/auth.js"></script>, 
     <script key="sdsdsd" src="/assets/js/python.js"></script>,
-    <script key="qqqqqqq" src="/assets/js/mockup.js"></script>,
     <script key="wwwfewwww" src="/assets/js/progress-bar.js"></script>,
     <script key="vewefs" src="/assets/plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>,
     <script key="wwwwwww" src="/assets/plugins/before-after-image-viewer/dist/beforeafter.jquery-1.0.0.js"></script>,

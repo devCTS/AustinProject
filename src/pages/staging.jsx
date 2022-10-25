@@ -1,6 +1,5 @@
 import * as React from "react"
 import { useEffect } from 'react';
-// import { navigate } from "@reach/router"
 import { withPrefix } from "gatsby"
 import { useApplicationContext } from "../../provider"
 import { navigate } from "gatsby"
@@ -42,7 +41,6 @@ export default function Home() {
       <div>
       <Helmet>
             <script src={withPrefix("assets/js/jquery.min.js")} type="text/javascript" />
-            {/* <script src={withPrefix("assets/js/jquery.redirect.js")} type="text/javascript" /> */}
             <script src={withPrefix("assets/js/popper.min.js")} type="text/javascript" />
             <script src={withPrefix("assets/js/bootstrap.min.js")} type="text/javascript" />
             <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
@@ -58,9 +56,7 @@ export default function Home() {
             <link href={withPrefix("assets/css/fontawesome.min.css")} rel="stylesheet"/>
         </Helmet>
         <div className="container-main" id="page">
-          {/* Header */}
           <Header></Header>
-          {/* Content - Main */}
           <main className="content-main">
             <div className="split-cont">
               <div className="container">
@@ -243,7 +239,6 @@ export default function Home() {
               </div>
             </div>
           </main>
-          {/* Footer */}
           <Footer></Footer>
         </div>
       </div>

@@ -4,7 +4,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../services/firebase.config';
 
-console.log("!!!!!!!!!!!!!234", firebaseConfig);
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
@@ -15,16 +14,13 @@ export const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user));
 
 export const handleGoogleSignIn = () => {
-  console.log("Here you came");
   firebase.auth()
     .signInWithPopup(googleProvider)
     .then((result) => {
       const credential = result.credential;
       const token = credential.accessToken;
       const user = result.user;
-      console.log(token, user);
       setUser(user);
-      console.log("!!!!!!!!!", window.localStorage.getItem("gatsbyUser"));
       navigate("/staging");
 
     }).catch((error) => {
@@ -32,7 +28,6 @@ export const handleGoogleSignIn = () => {
       const errorMessage = error.message;
       const email = error.email;
       const credential = error.credential;
-      console.log(errorCode, errorMessage, email, credential)
     });
 }
 
@@ -56,7 +51,6 @@ export const getUser = () =>
 // Return true if user is logged in. Otherwise false.
 export const isLoggedIn = () => {
   const user = getUser();
-  console.log("Dammn", (!!user.status | !!user.email));
   return (!!user.status | !!user.email);
 };
 

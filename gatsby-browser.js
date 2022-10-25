@@ -6,7 +6,7 @@
 
 import React from "react"
 // import "./static/assets/css/custom-styles.css"
-
+import "./static/assets/css/styles.css"
 import "./static/assets/css/bootstrap.min.css"
 import "./static/assets/css/brands.min.css"
 import "./static/assets/css/light.min.css"
@@ -14,15 +14,13 @@ import "./static/assets/css/regular.min.css"
 import "./static/assets/css/solid.min.css"
 import "./static/assets/css/duotone.min.css"
 import "./static/assets/css/fontawesome.min.css"
-import "./static/assets/css/styles.css"
 import "./static/assets/css/custom-styles.css"
 import "./static/assets/css/python.css"
 import "./static/assets/css/mockup.css"
 import "./static/assets/css/art-styles.css"
 import "./static/assets/css/components.css"
-
-// import "./static/assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
-// import "./static/assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+import "./static/assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+import "./static/assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
 
 import Provider from "./provider"
 const $ = require("jquery")

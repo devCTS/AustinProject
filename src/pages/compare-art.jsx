@@ -15,8 +15,6 @@ useEffect(() => {
     }, []);
 
 const resizeIt = () =>{
-
-    console.log("!@#!@#");
     var createItImageObj = $(".selected").find('.art-img-wrapper img');
     //check length of object if greater than 1 then return false
     if(createItImageObj.length > 1){
@@ -37,7 +35,7 @@ const resizeIt = () =>{
     <div className="container-main" id="page">
     <Header></Header>
     <Helmet>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+        {/* <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" /> */}
         <link href={withPrefix("assets/css/art-styles.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/css/components.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/css/python.css")} rel="stylesheet"/>
@@ -49,7 +47,6 @@ const resizeIt = () =>{
         <script src={withPrefix("assets/js/popper.min.js")} type="text/javascript" />
         <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
         <script src={withPrefix("assets/js/compare-art.js")} type="text/javascript" />
-        <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" />
         <script src={withPrefix("assets/js/compare-art-carousel.js")} type="text/javascript" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" />
         <script src={withPrefix("assets/plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js")} type="text/javascript" />

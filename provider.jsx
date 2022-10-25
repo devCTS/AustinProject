@@ -15,7 +15,7 @@ const Provider = ({ children }) => {
 
   return (
     <ApplicationContext.Provider value={{ applicationState, setApplicationState }}>
-      {children}S
+      {children}
     </ApplicationContext.Provider>
   );
 };

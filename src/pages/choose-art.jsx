@@ -8,12 +8,10 @@ import Footer from "../components/footer-1";
 import Header from "../components/header";
 import $ from "jquery";
 
-
 export default function Layout() {
 
   useEffect(() => {
     if (!isLoggedIn()) { navigate('/signin'); }
-
     if (applicationState.detailedDescription) {
       generateArt(applicationState.detailedDescription)
     }
@@ -25,14 +23,12 @@ export default function Layout() {
 
   const generateArt = async (phrase) => {
     const el = document.querySelectorAll('.image_art');
-    console.log("elelel", el.length);
     let str = phrase || "cyber punk"
     $('.image_art').each(function (i, obj) {
 
       fetch("http://54.173.169.111/api/diffusion/generate?prompt=" + str).then(response => response.json())
         .then((data) => {
           localStorage.setItem('job_id', data.id)
-          console.log("Showing the responsed data", data);
           // for (let i = 0; i < el.length; i++) {
             let image = document.querySelector('#image_art' + i);
             image.src = data.images[0];
@@ -78,10 +74,8 @@ export default function Layout() {
   // for advanced version for compare-art pages.
   const onMerchifyClick = (e) => {
     e.preventDefault();
-    console.log("MERCHIFY BUTTON IS PRESSED");
     var conceptName = $(".selected").find('.figure img');
     // $('.art-image').find(":selected").text()
-    console.log("THis is it", conceptName);
     const arrImg = []
     $.each( conceptName, function( key, value ) {
       arrImg.push(value.src);
@@ -92,7 +86,6 @@ export default function Layout() {
       "id": localStorage.getItem('job_id'),
       "images": arrImg
     }
-    console.log(dataPostRequest);
     const merchifyArr = []
     postData('http://54.173.169.111/api/rudalle/upscale2x', dataPostRequest)
     .then((data) => {

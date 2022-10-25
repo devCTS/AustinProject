@@ -6,7 +6,6 @@ function validateEmail($email) {
 }
 
 $(document).on('focus keyup', '#signupEmail', function(e) {
-    // console.log("!!!!!!!!@@@@@@@@@@#############", validateEmail(signupEmail.value));
     $(this).parents('li').find('.required-txt').remove();
     if (!validateEmail(this.value)) {
         $(this).after(`

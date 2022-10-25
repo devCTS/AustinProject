@@ -2,11 +2,47 @@
  * Generating Mockup CSS *
 *****************************************/ 
 var mockupParams;
+var generatorMockup = $('.generator-mockup');
+
 // - mockup-tab select
-$(document).ready(function(){
-  // renderFrontMockup();
+$(document).ready(function() {
+  renderFrontMockup();
   initScaleSlider();
+  $('.menu-bar').click(function() {
+		$('.menu-bar').removeClass('active');
+		$('.nav-bar').slideUp(10);
+		$('.overlay').removeClass('show');
+		$('body').removeClass('hidden-body');
+		if($(this).next().is(':hidden') == true) {
+			$(this).addClass('active');
+			$(this).next().slideDown(10);
+			$('.overlay').addClass('show');
+			$('body').addClass('hidden-body');
+		}
+	});
 });
+
+$(document).ready(function() {			
+	
+	$('input,textarea').focus(function(){
+		$(this).data('placeholder',$(this).attr('placeholder')).attr('placeholder','');
+	}).blur(function(){
+		$(this).attr('placeholder',$(this).data('placeholder'));
+	});
+  let imgs = localStorage.getItem('image_resize')
+  console.log(imgs)
+  const img = document.createElement("img");
+    img.classList.add("mockup-img");
+ 
+    console.log(img)
+    $('.mockup-design').html(img);
+    img.src = imgs
+    console.log(img.naturalWidth)
+    generateMockupHandler(img.naturalWidth, img.naturalHeight);
+        $('.upload-design').hide();
+});
+
+
 $(document).on('click', '.mockup-tab', function() {
   // save the mockup work
   saveMockupDesign();
@@ -17,15 +53,19 @@ $(document).on('click', '.mockup-tab', function() {
   $(this).addClass('active');
   switch($(this).data('id')) {
     case 'front' :
+      console.log("!!!Front!!!");
       renderFrontMockup();
       break;
     case 'top' :
+      console.log("!!!Top!!!");
       renderTopMockup();
       break;
     case 'bottom' :
+      console.log("!!!Bottom!!!");
       renderBottomMockup();
       break;
     case 'inside' :
+      console.log("!!!Inside!!!");
       renderInsideMockup();
       break;
     default : break;
@@ -34,8 +74,10 @@ $(document).on('click', '.mockup-tab', function() {
   rememberMockupDesign(this);
   console.log('saved params - ', mockupParams);
 });
+
 function saveMockupDesign() {
   var orgPart = $('.mockup-tab.active');
+  console.log("!@#$%^&*()",orgPart.data('id'));
   // save mockup
   if(!$('.mockup-handler').length) {
     return;
@@ -45,15 +87,16 @@ function saveMockupDesign() {
   var left = $('.mockup-handler')[0].style.left;
   var top = $('.mockup-handler')[0].style.top;
   var transform = $('.mockup-handler')[0].style.transform;
-  var param = {
-    ...mockupParams[orgPart.data('id')],
-    width: width,
-    height: height,
-    left: left,
-    top: top,
-    transform: transform
-  };
-  mockupParams = {...mockupParams, [orgPart.data('id')]: param};
+  console.log("123123123", ...mockupParams);
+  // var param = {
+  //   ...mockupParams[orgPart.data('id')],
+  //   width: width,
+  //   height: height,
+  //   left: left,
+  //   top: top,
+  //   transform: transform
+  // };
+  // mockupParams = {...mockupParams, [orgPart.data('id')]: param};
 }
 function clearMockupDesign() {
   $('.upload-design').show();
@@ -80,7 +123,7 @@ function rememberMockupDesign(part) { // part: design part of product
     img.style.transform = param.transform;
     $('.mockup-design').html(img);
   }
-  // remember mockup handler
+
   var mockupHandler = `
     <div class="mockup-design-over">
       <div class="box mockup-handler" id="mockupHandler"
@@ -91,19 +134,15 @@ function rememberMockupDesign(part) { // part: design part of product
   `;
   $('.mockup-design-over').remove();
   $('.generator-mockup').append(mockupHandler);
-  // 
   initBoxModeling();
   $('.upload-design').hide();
-  // 
   initScaleSlider();
 }
-// 
-var generatorMockup = $('.generator-mockup');
-// 
+
 function renderFrontMockup() {
   var mockupContent = `
     <div class="backpack-mockup front">
-      <img src="../assets/mockup/backpack/front.png" alt="" />
+      <img src="assets/mockup/backpack/front.png" alt="" />
       <span class="safe-print-area-top">Safe Print Area</span>
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="front-top">Front top</span>
@@ -119,7 +158,7 @@ function renderFrontMockup() {
 function renderTopMockup() {
   var mockupContent = `
     <div class="backpack-mockup top">
-      <img src="../assets/mockup/backpack/top.png" alt="" />
+      <img src="assets/mockup/backpack/top.png" alt="" />
       <span class="safe-print-area-top">Safe Print Area</span>
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="placement-on-product">Placement on product</span>
@@ -132,7 +171,7 @@ function renderTopMockup() {
 function renderBottomMockup() {
   var mockupContent = `
     <div class="backpack-mockup bottom">
-      <img src="../assets/mockup/backpack/bottom.png" alt="" />
+      <img src="assets/mockup/backpack/bottom.png" alt="" />
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="placement-on-product">Placement on product</span>
     </div>
@@ -144,7 +183,7 @@ function renderBottomMockup() {
 function renderInsideMockup() {
   var mockupContent = `
     <div class="backpack-mockup inside">
-      <img src="../assets/mockup/backpack/inside.png" alt="" />
+      <img src="assets/mockup/backpack/inside.png" alt="" />
       <span class="safe-print-area-bottom">Safe Print Area</span>
       <span class="placement-on-product">Placement on product</span>
     </div>
@@ -155,15 +194,18 @@ function renderInsideMockup() {
 
 // - Upload Design
 $(document).on('click', '.btn-upload', function(){
+ 
   $('.upload-file').click();
 });
 $(document).on('change', '.upload-file', function(e){
+  
   if(this.files.length > 0) {
     const file = this.files[0];
     // 
     const img = document.createElement("img");
     img.classList.add("mockup-img");
     img.file = file;
+    
     $('.mockup-design').html(img);
     // 
     const reader = new FileReader();

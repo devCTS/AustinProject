@@ -28,17 +28,14 @@ export default function Layout() {
     try {
         const res = await axios.post("https://back-end-99gens.herokuapp.com/api/v1/auth/login", {email: state.email, password:state.password}); 
         if(res.data.status){
-          console.log("This is it!", res.data);
           setUser(res.data);
           navigate("/staging");
         }
-        // console.log("SignUp Success", res);
     } catch (error) {
       $('#password').parents('li').find('.required-txt').remove();
         $('#password').after(`
             <div class="required-txt">* Invalid Email or Password</div>
         `);
-        console.log(error.response);
     }
   };
 

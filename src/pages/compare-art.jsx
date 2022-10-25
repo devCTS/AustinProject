@@ -15,18 +15,19 @@ useEffect(() => {
     }, []);
 
 const resizeIt = () =>{
-    var createItImageObj = $(".selected").find('.art-img-wrapper img');
-    //check length of object if greater than 1 then return false
-    if(createItImageObj.length > 1){
-      alert('Cannot select More than one Image')
-      return false
-    }else{
-      $('.new_gif').css('display','flex');
-      let imgUrl = createItImageObj.attr('alt')
+    console.log("Because of Error!");
+    // var createItImageObj = $(".selected").find('.art-img-wrapper img');
+    // //check length of object if greater than 1 then return false
+    // if(createItImageObj.length > 1){
+    //   alert('Cannot select More than one Image')
+    //   return false
+    // }else{
+    //   $('.new_gif').css('display','flex');
+    //   let imgUrl = createItImageObj.attr('alt')
   
-      localStorage.setItem('image_resize', imgUrl)
-      navigate("/mockup");
-    }
+    //   localStorage.setItem('image_resize', imgUrl)
+    //   navigate("/mockup");
+    // }
 }
 
 

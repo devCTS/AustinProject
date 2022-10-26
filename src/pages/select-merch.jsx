@@ -17,8 +17,11 @@ export default function Layout() {
                 <Helmet>
                     <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" />
                     <script src={withPrefix("assets/js/owl.carousel.js")} type="text/javascript" />
-                    {/* <script src={withPrefix("assets/js/custom.js")} type="text/javascript" /> */}
+                    <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
                     {/* <script src={withPrefix("assets/js/choose-art.js")} type="text/javascript" /> */}
+
+                    {/* <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" /> */}
+
                 </Helmet>
                 {/* Header */}
                 <Header></Header>
@@ -134,7 +137,7 @@ export default function Layout() {
                                 </div>
                                 <div className="row-container">
                                     <div className="container-inn">
-                                        <div className="btn-out"><a href="#" className="btn btn-blue"><em className="fal fa-shopping-cart" /> ADD TO CART</a></div>
+                                        {/* <div className="btn-out"><a href="#" className="btn btn-blue"><em className  "fal fa-shopping-cart" /> ADD TO CART</a></div> */}
                                     </div>
                                 </div>
                             </div>

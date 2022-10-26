@@ -41,7 +41,7 @@ const resizeIt = () =>{
         <link href={withPrefix("assets/css/components.css")} rel="stylesheet"/>
         <link href={withPrefix("assets/css/python.css")} rel="stylesheet"/>
 
-        <link href={withPrefix("assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css")} rel="stylesheet"/>
+        {/* <link href={withPrefix("assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css")} rel="stylesheet"/> */}
         <link href={withPrefix("assets/plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css")} rel="stylesheet"/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />

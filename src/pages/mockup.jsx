@@ -94,7 +94,7 @@ export default function Layout() {
           <script src={withPrefix("assets/js/mockup.js")} type="text/javascript" />
 
           <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" />
-          <script src={withPrefix("assets/plugins/resize-drag-rotate-box-modeling/box-modeling-custom.js")} type="text/javascript" />
+          {/* <script src={withPrefix("assets/plugins/resize-drag-rotate-box-modeling/box-modeling-custom.js")} type="text/javascript" /> */}
         </Helmet>
         <Header></Header>
         <main className="content-main">

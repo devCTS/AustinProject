@@ -25,7 +25,6 @@ export function onRenderBody(
     <script key="msmddsd" src="/assets/js/bootstrap.min.js"></script>,
     // <script key="dfdffdsd" src="/assets/js/custom.js"></script>,
     // <script key="dfdffdsd" src="/assets/js/mockup.js"></script>,
-
     // <script key="dfdffdsfewd" src="/assets/js/compare-art.js"></script>,
     <script key="sdjsewdjsj" src="/assets/js/choose-art.js"></script>,
     <script key="sdjsdjsj" src="/assets/js/auth.js"></script>, 

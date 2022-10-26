@@ -14,7 +14,7 @@ export default function Layout() {
    return (
       <>
          <Helmet>
-            <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" />
+            {/* <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" /> */}
          </Helmet>
          <div className="container-main" id="page">
             <Header></Header>

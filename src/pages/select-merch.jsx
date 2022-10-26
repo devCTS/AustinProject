@@ -15,9 +15,14 @@ export default function Layout() {
     return (
         <>
             <div className="container-main" id="page">
-                {/* <Helmet>
-
-                </Helmet> */}
+                <Helmet>
+                    <script
+                    src="https://code.jquery.com/jquery-3.4.1.min.js"
+                    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                    crossorigin="anonymous"/>
+                    <script async src={withPrefix("assets/js/owl.carousel.js")} type="text/javascript" />
+                    <script async src={withPrefix("assets/js/select-merch.js")} type="text/javascript" />
+                </Helmet>
                 <Header></Header>
                 <main className="content-main">
                     <div className="breadcrumb">

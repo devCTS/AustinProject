@@ -6,6 +6,7 @@ import { isLoggedIn } from "../services/auth";
 import { useEffect } from 'react';
 import { navigate } from "gatsby";
 import { Helmet } from "react-helmet"
+import $ from "jquery";
 export default function Layout() {
 
     useEffect(() => {
@@ -16,8 +17,8 @@ export default function Layout() {
             <div className="container-main" id="page">
                 <Helmet>
                     <script src={withPrefix("assets/js/owl.carousel.js")} type="text/javascript" />
-                    <script src={withPrefix("assets/js/custom.js")} type="text/javascript" />
-                    <script src={withPrefix("assets/js/choose-art.js")} type="text/javascript" />
+                    {/* <script src={withPrefix("assets/js/custom.js")} type="text/javascript" /> */}
+                    {/* <script src={withPrefix("assets/js/choose-art.js")} type="text/javascript" /> */}
                     <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" />
                 </Helmet>
                 <Header></Header>

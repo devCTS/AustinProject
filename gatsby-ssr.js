@@ -13,12 +13,10 @@ export function onRenderBody(
 ) {
   setHtmlAttributes({ lang: `en` })
   setPostBodyComponents([
-    <script
-      key="sjjjjdfjdfjfj"
+    <script key="sjjjjdfjdfjfj"
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossOrigin="anonymous"
-    ></script>,
+      crossOrigin="anonymous"/>,
     <script key="sdsdfsfdfdsd" src="/assets/js/python.js"></script>,
     <script key="sdsllflldfdfsfdfdsd" src="/assets/js/jquery.min.js"></script>,
     <script key="sjfdfks" src="/assets/js/popper.min.js"></script>,

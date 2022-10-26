@@ -15,12 +15,9 @@ export default function Layout() {
     return (
         <>
             <div className="container-main" id="page">
-                <Helmet>
-                    <script src={withPrefix("assets/js/owl.carousel.js")} type="text/javascript" />
-                    {/* <script src={withPrefix("assets/js/custom.js")} type="text/javascript" /> */}
-                    {/* <script src={withPrefix("assets/js/choose-art.js")} type="text/javascript" /> */}
-                    <script src={withPrefix("assets/js/select-merch.js")} type="text/javascript" />
-                </Helmet>
+                {/* <Helmet>
+
+                </Helmet> */}
                 <Header></Header>
                 <main className="content-main">
                     <div className="breadcrumb">
